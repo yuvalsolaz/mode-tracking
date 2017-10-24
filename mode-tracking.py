@@ -179,7 +179,7 @@ def addFeatures(_rdf):
     idf['kuforce'] = roll_force.kurt()
     idf['kugyro'] = roll_gyro.kurt()
 
-    idf['light'] = idf['I'] if 'I' in idf else 0.0
+    idf['light'] = rdf['I'] if 'I' in rdf else 0.0
 
     idf['peaksgforce'] = idf['gforce'].rolling(window=PEAKS_WINDOW_SIZE,min_periods=1 ,center=False).apply(peaks)
     idf['peaksgyro'] = idf['gyro'].rolling(window=PEAKS_WINDOW_SIZE,min_periods=1 ,center=False).apply(peaks)
@@ -209,7 +209,7 @@ def getLatest():
 def readCsvString(data):
    dataio = StringIO(data)
    dataFrame = pd.read_csv(dataio, sep=",")
-   dataFrame.columns = ['time','gfx', 'gFy','gFz','wx','wy','wz']
+   dataFrame.columns = ['time','gfx', 'gFy','gFz','wx','wy','wz','I']
    return dataFrame
 
 
@@ -239,7 +239,7 @@ def plot(data):
     #plt.axis([-1,7,-10,10])
     plt.ion()
     plt.show()
-    plt.plot(data.agyro, 'b') #data.time,
+    plt.plot(data.light, 'b') #data.time,
     plt.draw()
     plt.pause(0.001)
 
