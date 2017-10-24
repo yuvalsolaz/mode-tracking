@@ -40,7 +40,7 @@ PEAKS_WINDOW_SIZE = 5*WINDOW_SIZE  ## sliding window size for peaks count featur
 DEVICE_MODE_LABELS = ['pocket','swing','texting','talking','whatever']
 USER_MODE_LABELS = ['walking','fastwalking','stairs','static','whatever']
 
-FEATURES = ['timestamp',
+FEATURES = [#'timestamp',
             'agforce','agyro',               ## avarage
             'mgforce','mgyro',               ## median
             'vgforce','vgyro',               ## variance
@@ -96,6 +96,12 @@ def RemoveOutlier (values):
 # rolling window on 2d numpy array. return crrelation between first and second array colomn
 # input 2d array with 2 colomns and rolling window size
 # output: 1d array with correlation results
+
+# peaks detection :
+mph = 0 ## minimum peak height
+mpd = 5 ## minimum peak distance = 20
+def peaks(values):
+    return len(detect_peaks(values, mph, mpd, show=False))
 
 def window_correlation(a,window_size):
     ## pad array start with zeros for rolling window compatibility
@@ -191,33 +197,85 @@ def addFeatures(df):
 
 ## get latest sensors samples in json format
 import urllib2
-import json as JSON
+import sys
+
+if sys.version_info[0] < 3:
+    from StringIO import StringIO
+else:
+    from io import StringIO
 
 def getLatest():
     req = urllib2.Request('https://us-central1-sensors-efc67.cloudfunctions.net/latest')
     response = urllib2.urlopen(req)
-    print
     return response.read()
 
-## convert json to data frame :
-def toDataFrame(jsonStr):
-    jsonDict= JSON.loads(jsonStr)[0]
+def readCsvString(data):
+   dataio = StringIO(data)
+   ## StringIO("""time;gfx;gFy;gFz;wx;wy;wz""")
 
-    accel = jsonDict['data']['accel']
-    adataFrame = pd.DataFrame(accel)
-    adataFrame.columns = ['gfx', 'gFy','gFz']
-
-    gyro = jsonDict['data']['gyro']
-    gdataFrame = pd.DataFrame(gyro)
-    gdataFrame.columns = ['wx', 'wy','wz']
-
-    dataFrame = pd.concat([adataFrame, gdataFrame], axis=1)
-    return dataFrame
-
-json = getLatest()
-rdf = toDataFrame(json)
-print rdf.head()
-
-# calssify rdf :
+   dataFrame = pd.read_csv(dataio, sep=",")
+   dataFrame.columns = ['time','gfx', 'gFy','gFz','wx','wy','wz']
+   return dataFrame
 
 
+# calssification
+## ====================================================================================================================
+# load model from file
+import time
+import pickle
+from collections import Counter
+
+def loadModel(modelFile):
+    loaded_model = pickle.load(open(modelFile, "rb"))
+    return loaded_model
+
+def predict(dataFrame):
+    ## TODO : plot data
+    dtest = xgb.DMatrix(dataFrame)
+    preds = xgbmodel.predict(dtest)
+    best_preds = np.asarray([np.argmax(line) for line in preds])
+    return best_preds
+
+def trace(msg):
+    if DEBUG == True :
+        print (msg)
+
+def plot(data):
+    plt.plot(data.time, data.gfx, 'b')
+    plt.show()
+
+## main loop
+DEBUG = False
+modelFile=r'model/xgb.pickle.dat'
+
+print ("loading model : ",modelFile)
+xgbmodel = loadModel(modelFile)
+
+while True :
+    trace("fetch sensor data " )
+    sensorData = getLatest()
+
+    trace("convert to dataFrame ")
+    rdf = readCsvString(sensorData)
+    trace(str(len(rdf)) + ' sampls loaded ')
+    ## plot(rdf) 
+
+    trace("add features ")
+    addFeatures(rdf)
+
+    trace("select relevant features ")
+    df = rdf[FEATURES]
+
+    trace("predict ")
+    pred = predict(df)
+
+    # convert to mode names and print counts for each predicted mode
+    predNames = [DEVICE_MODE_LABELS[x] for x in pred]
+    mode = Counter(predNames)
+    print mode
+
+    # Wait for 2 seconds
+    time.sleep(2.0)
+
+
+print (' bye bye..')
