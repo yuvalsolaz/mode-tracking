@@ -34,7 +34,7 @@ from sklearn.feature_selection import RFECV
 dataSource = r'../raw-data/utf8'
 SAMPLE_FREQ = 50
 FILE_MARGINES = 5* SAMPLE_FREQ  ## number of samples to ignore in the  start and in the end of the file (5 seconds )
-WINDOW_SIZE = 2 * 128  ## sliding window size
+WINDOW_SIZE = 128  ## sliding window size
 PEAKS_WINDOW_SIZE = 5*WINDOW_SIZE  ## sliding window size for peaks count feature
 
 DEVICE_MODE_LABELS = ['pocket','swing','texting','talking','whatever']
@@ -117,82 +117,79 @@ def window_correlation(a,window_size):
     ## correlates left and right values
     return  np.array([np.corrcoef(l[i] , r[i],rowvar=0)[0,1] for i in range(len(l)-1)])
 
-def addFeatures(df):
+def addFeatures(_rdf):
 
-    df['timestamp'] = df['time']
+    idf = pd.DataFrame()
+
+    idf['timestamp'] = _rdf['time']
 
     ## norm calculations :
-    df['gforce'] = np.sqrt(df['gfx']**2 + df['gFy']**2 + df['gFz']**2)
-    df['gyro'] = np.sqrt(df['wx']**2 + df['wy']**2 + df['wz']**2)
-
-   # remove outliers
-    rawforce = np.sqrt(df['gfx']**2 + df['gFy']**2 + df['gFz']**2)
-    df['gforce'] = RemoveOutlier(rawforce)
-    rawgyro = np.sqrt(df['wx']**2 + df['wy']**2 + df['wz']**2)
-    df['gyro'] =RemoveOutlier(rawgyro)
+    g = 9.8
+    gfx = _rdf['gfx'] / g
+    gfy = _rdf['gFy'] / g
+    gfz = _rdf['gFz']  / g
+    idf['gforce'] = np.sqrt(gfx**2 + gfy**2 + gfz**2)
+    idf['gyro'] = np.sqrt(_rdf['wx']**2 + _rdf['wy']**2 + _rdf['wz']**2)
 
     ## calculates statistics features on rolling window :
 
-    df['agforce'] = df['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False).mean()
-    df['agyro']   = df['gyro'].rolling(window=WINDOW_SIZE,min_periods=1 ,center=False).mean()
+    idf['agforce'] = idf['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False).mean()
+    idf['agyro']   = idf['gyro'].rolling(window=WINDOW_SIZE,min_periods=1 ,center=False).mean()
 
-    df['mgforce'] = df['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False).median()
-    df['mgyro']   = df['gyro'].rolling(window=WINDOW_SIZE,min_periods=1 ,center=False).median()
+    idf['mgforce'] = idf['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False).median()
+    idf['mgyro']   = idf['gyro'].rolling(window=WINDOW_SIZE,min_periods=1 ,center=False).median()
 
-    df['vgforce'] = df['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False).var()
-    df['vgyro']   = df['gyro'].rolling(window=WINDOW_SIZE,min_periods=1,center=False).var()
+    idf['vgforce'] = idf['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False).var()
+    idf['vgyro']   = idf['gyro'].rolling(window=WINDOW_SIZE,min_periods=1,center=False).var()
 
-    df['maxgforce'] = df['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False).max()
-    df['maxgyro']   = df['gyro'].rolling(window=WINDOW_SIZE,min_periods=1 ,center=False).max()
+    idf['maxgforce'] = idf['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False).max()
+    idf['maxgyro']   = idf['gyro'].rolling(window=WINDOW_SIZE,min_periods=1 ,center=False).max()
 
-    df['maxgforceabs'] = abs(df['maxgforce'])
-    df['maxgyroabs']   = abs(df['maxgyro'])
+    idf['maxgforceabs'] = abs(idf['maxgforce'])
+    idf['maxgyroabs']   = abs(idf['maxgyro'])
 
-    df['mingforce'] = df['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False).min()
-    df['mingyro']  = df['gyro'].rolling(window=WINDOW_SIZE,min_periods=1 ,center=False).min()
+    idf['mingforce'] = idf['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False).min()
+    idf['mingyro']  = idf['gyro'].rolling(window=WINDOW_SIZE,min_periods=1 ,center=False).min()
 
-    df['mingforceabs'] = abs(df['mingforce'])
-    df['mingyroabs']   = abs(df['mingyro'])
+    idf['mingforceabs'] = abs(idf['mingforce'])
+    idf['mingyroabs']   = abs(idf['mingyro'])
 
-    df['ampgforce'] = df['maxgforce'] - df['mingforce']
-    df['ampgyro']  = df['maxgyro'] - df['mingyro']
+    idf['ampgforce'] = idf['maxgforce'] - idf['mingforce']
+    idf['ampgyro']  = idf['maxgyro'] - idf['mingyro']
 
-    roll_force = df['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False)
-    roll_gyro = df['gyro'].rolling(window=WINDOW_SIZE,min_periods=1,center=False)
+    roll_force = idf['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False)
+    roll_gyro = idf['gyro'].rolling(window=WINDOW_SIZE,min_periods=1,center=False)
 
     ## iqr calculations:
-
-    q25 = roll_force.apply(RollingPercentile, [25.0])
-    q75 = roll_force.apply(RollingPercentile, [75.0])
     q25 = roll_gyro.apply(RollingPercentile, [25.0])
     q75 = roll_gyro.apply(RollingPercentile, [75.0])
-    df['iqrforce'] = q75 - q25
-    df['iqqgyro'] = q75 - q25
-
-
+    idf['iqrforce'] = q75 - q25
+    idf['iqqgyro'] = q75 - q25
 
     ## entropy calculations:
-    df['entforce'] = roll_force.apply(RollingEntropy);
-    df['entgyro'] = roll_gyro.apply(RollingEntropy);
+    idf['entforce'] = roll_force.apply(RollingEntropy);
+    idf['entgyro'] = roll_gyro.apply(RollingEntropy);
 
     ## ratio calculations
-    df['MultiGyroAcc'] = df['maxgforce']*df['maxgyro']
+    idf['MultiGyroAcc'] = idf['maxgforce']*idf['maxgyro']
 
-    df['skforce'] = roll_force.skew()
-    df['skgyro'] = roll_gyro.skew()
+    idf['skforce'] = roll_force.skew()
+    idf['skgyro'] = roll_gyro.skew()
 
-    df['kuforce'] = roll_force.kurt()
-    df['kugyro'] = roll_gyro.kurt()
+    idf['kuforce'] = roll_force.kurt()
+    idf['kugyro'] = roll_gyro.kurt()
 
-    df['light'] = df['I'] if 'I' in df else 0.0
+    idf['light'] = idf['I'] if 'I' in idf else 0.0
 
-    df['peaksgforce'] = df['gforce'].rolling(window=PEAKS_WINDOW_SIZE,min_periods=1 ,center=False).apply(peaks)
-    df['peaksgyro'] = df['gyro'].rolling(window=PEAKS_WINDOW_SIZE,min_periods=1 ,center=False).apply(peaks)
+    idf['peaksgforce'] = idf['gforce'].rolling(window=PEAKS_WINDOW_SIZE,min_periods=1 ,center=False).apply(peaks)
+    idf['peaksgyro'] = idf['gyro'].rolling(window=PEAKS_WINDOW_SIZE,min_periods=1 ,center=False).apply(peaks)
 
     ## gforce gyro correlation :
-    df['gforcegyrocorr'] = window_correlation(df[['gforce','gyro']].values,WINDOW_SIZE)
+    idf['gforcegyrocorr'] = window_correlation(idf[['gforce','gyro']].values,WINDOW_SIZE)
 
-    df.fillna(method='ffill', axis=0, inplace=True)
+    idf.fillna(method='ffill', axis=0, inplace=True)
+
+    return idf
 
 
 ## get latest sensors samples in json format
@@ -211,8 +208,6 @@ def getLatest():
 
 def readCsvString(data):
    dataio = StringIO(data)
-   ## StringIO("""time;gfx;gFy;gFz;wx;wy;wz""")
-
    dataFrame = pd.read_csv(dataio, sep=",")
    dataFrame.columns = ['time','gfx', 'gFy','gFz','wx','wy','wz']
    return dataFrame
@@ -229,8 +224,7 @@ def loadModel(modelFile):
     loaded_model = pickle.load(open(modelFile, "rb"))
     return loaded_model
 
-def predict(dataFrame):
-    ## TODO : plot data
+def predict(xgbmodel,dataFrame):
     dtest = xgb.DMatrix(dataFrame)
     preds = xgbmodel.predict(dtest)
     best_preds = np.asarray([np.argmax(line) for line in preds])
@@ -241,15 +235,23 @@ def trace(msg):
         print (msg)
 
 def plot(data):
-    plt.plot(data.time, data.gfx, 'b')
+    plt.clf()
+    #plt.axis([-1,7,-10,10])
+    plt.ion()
     plt.show()
+    plt.plot(data.agyro, 'b') #data.time,
+    plt.draw()
+    plt.pause(0.001)
 
 ## main loop
 DEBUG = False
 modelFile=r'model/xgb.pickle.dat'
 
 print ("loading model : ",modelFile)
-xgbmodel = loadModel(modelFile)
+xgbloaded = loadModel(modelFile)
+
+plt.ion()
+plt.show()
 
 while True :
     trace("fetch sensor data " )
@@ -258,17 +260,17 @@ while True :
     trace("convert to dataFrame ")
     rdf = readCsvString(sensorData)
     trace(str(len(rdf)) + ' sampls loaded ')
-    ## plot(rdf) 
 
     trace("add features ")
-    addFeatures(rdf)
+    df = addFeatures(rdf)
 
     trace("select relevant features ")
-    df = rdf[FEATURES]
+    tdf = df[FEATURES]
+
+    plot(tdf)
 
     trace("predict ")
-    pred = predict(df)
-
+    pred = predict(xgbloaded,tdf)
     # convert to mode names and print counts for each predicted mode
     predNames = [DEVICE_MODE_LABELS[x] for x in pred]
     mode = Counter(predNames)
