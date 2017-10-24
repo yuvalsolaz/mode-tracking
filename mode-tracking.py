@@ -56,8 +56,14 @@ FEATURES = [#'timestamp',
             'mingforceabs','mingyroabs',     ## abs min
             'ampgforce','ampgyro' ,           ## amplitude |max - min|
             'peaksgforce','peaksgyro',       ## peaks count in PEAKS_WINDOW_SIZE
-            'light'                          ## embient light sensor
-           ]
+            'light',                         ## embient light sensor
+            'alight',
+            'mlight',
+            'vlight',
+            'maxlight',
+            'minlight',
+            'amplight'
+]
 ## Calulates high level features and add to given data frame add norm feature for g-force , gyro vectors
 ## calculates additional statistics features on the norm properties using sliding window fill NaN values
 def RollingPercentile(values,a):
@@ -187,6 +193,13 @@ def addFeatures(_rdf):
     ## gforce gyro correlation :
     idf['gforcegyrocorr'] = window_correlation(idf[['gforce','gyro']].values,WINDOW_SIZE)
 
+    idf['alight'] = idf['light'].rolling(window=WINDOW_SIZE, min_periods=1, center=False).mean()
+    idf['mlight'] = idf['light'].rolling(window=WINDOW_SIZE, min_periods=1, center=False).median()
+    idf['vlight'] = idf['light'].rolling(window=WINDOW_SIZE, min_periods=1, center=False).var()
+    idf['maxlight'] = idf['light'].rolling(window=WINDOW_SIZE, min_periods=1, center=False).max()
+    idf['minlight'] = idf['light'].rolling(window=WINDOW_SIZE, min_periods=1, center=False).min()
+    idf['amplight'] = idf['maxlight'] - idf['minlight']
+
     idf.fillna(method='ffill', axis=0, inplace=True)
 
     return idf
@@ -239,13 +252,13 @@ def plot(data):
     #plt.axis([-1,7,-10,10])
     plt.ion()
     plt.show()
-    plt.plot(data.light, 'b') #data.time,
+    plt.plot(data.agyro, 'b') #data.time,
     plt.draw()
     plt.pause(0.001)
 
 ## main loop
 DEBUG = False
-modelFile=r'model/xgb.pickle.dat'
+modelFile= r'model/xgb-light.pickle.dat' ##  'r'model/xgb-light.pickle.dat'
 
 print ("loading model : ",modelFile)
 xgbloaded = loadModel(modelFile)
