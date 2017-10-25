@@ -40,9 +40,32 @@ PEAKS_WINDOW_SIZE = 5*WINDOW_SIZE  ## sliding window size for peaks count featur
 DEVICE_MODE_LABELS = ['pocket','swing','texting','talking','whatever']
 USER_MODE_LABELS = ['walking','fastwalking','stairs','static','whatever']
 
-"""
-FEATURES = [#'timestamp',
-            'agforce','agyro',               ## avarage
+FEATURES = ['agforce','agyro',                          ## avarage
+            'mgforce','mgyro',                       ## median
+            'vgforce','vgyro',                         ## variance
+            'iqrforce','iqqgyro',                    ## iqr
+            'entforce','entgyro',                      ## entropy
+            'gforcegyrocorr', ## correlation
+            'skforce', 'skgyro',                       ## skewness
+            'kuforce','kugyro',                         ## kurtosis
+            'MultiGyroAcc',      ## max  gyro * max acc
+            ##'MultiVarGyroAcc', ## variance  gyro * variance acc
+            'maxgforce','maxgyro',                      ## max
+               # 'maxgforceabs','maxgyroabs',     ## abs max
+            'mingforce','mingyro',                      ## min
+               # 'mingforceabs','mingyroabs',     ## abs min
+            # 'aadforce','aadgyro',            ## average absolute dfference
+            # 'smaforce','smagyro',            ## signal magnitude area
+               # 'zcrforce','zcrgyro',           ## zero crossing rate
+            'gcrgforce',                    ## g-crossing rate
+            'mcrgforce','mcrgyro',          ## medain-crossing rate
+            'peaksgforce','peaksgyro',      ## peaks count in PEAKS_WINDOW_SIZE
+            #'enyforce','enygyro',                       ## signal energy
+            #'amAccGyro',               ## amplitude Acc Gyro
+            'ampgforce','ampgyro']                      ## amplitude |max
+
+
+__FEATURES = ['agforce','agyro',               ## avarage
             'mgforce','mgyro',               ## median
             'vgforce','vgyro',               ## variance
             'iqrforce','iqqgyro',            ## iqr
@@ -56,41 +79,15 @@ FEATURES = [#'timestamp',
             'mingforce','mingyro',           ## min
             'mingforceabs','mingyroabs',     ## abs min
             'ampgforce','ampgyro' ,           ## amplitude |max - min|
-            'peaksgforce','peaksgyro',       ## peaks count in PEAKS_WINDOW_SIZE
-            'light',                         ## embient light sensor
-            'alight',
-            'mlight',
-            'vlight',
-            'maxlight',
-            'minlight',
-            'amplight'
+            'peaksgforce','peaksgyro'       ## peaks count in PEAKS_WINDOW_SIZE
+#            'light' ,                         ## embient light sensor
+#             'alight',
+#             'mlight',
+#             'vlight',
+#             'maxlight',
+#             'minlight',
+#             'amplight'
 ]
-"""
-
-FEATURES = ['agforce','agyro',               ## avarage
-            'mgforce','mgyro',               ## median
-            'vgforce','vgyro',               ## variance
-            #'iqrforce','iqqgyro',            ## iqr
-            #'entforce','entgyro',            ## entropy
-            #'gforcegyrocorr',               ## correlation
-            #'skforce', 'skgyro',             ## skewness
-            #'kuforce','kugyro',              ## kurtosis
-            #'MultiGyroAcc',                  ## max  gyro * max acc
-            'maxgforce','maxgyro',           ## max
-            #'maxgforceabs','maxgyroabs',     ## abs max
-            'mingforce','mingyro',           ## min
-            #'mingforceabs','mingyroabs',     ## abs min
-            'ampgforce','ampgyro' ,           ## amplitude |max - min|
-            'peaksgforce','peaksgyro',       ## peaks count in PEAKS_WINDOW_SIZE
-            'light' ,                         ## embient light sensor
-             'alight',
-             'mlight',
-             'vlight',
-             'maxlight',
-             'minlight',
-             'amplight'
-]
-
 
 ## Calulates high level features and add to given data frame add norm feature for g-force , gyro vectors
 ## calculates additional statistics features on the norm properties using sliding window fill NaN values
@@ -126,6 +123,31 @@ def RemoveOutlier (values):
     mpd = 5 ## minimum peak distance = 20
     def peaks(values):
         return len(detect_peaks(values, mph, mpd, show=False))
+
+def AveAbsDiff(values):
+    res = np.mean(np.abs(values - values.mean()))
+    return res
+
+# Signal Magnitude Area
+def SigMagArea(values):
+    res = np.sum(values.mean())
+    return res
+
+# Zero crossing rate
+def ZeroCorsRate(values):
+    res = (np.nonzero(np.diff(values > 0))[0]).size
+    return res
+
+# g-crossing rate
+def GCorsRate(values):
+    res = (np.nonzero(np.diff(values > 1))[0]).size
+    return res
+
+# medain-crossing rate
+def MCorsRate(values):
+    tem = np.median(values)
+    res = (np.nonzero(np.diff(values > tem))[0]).size
+    return res
 
 # rolling window on 2d numpy array. return crrelation between first and second array colomn
 # input 2d array with 2 colomns and rolling window size
@@ -228,6 +250,11 @@ def addFeatures(_rdf):
     idf['minlight'] = idf['light'].rolling(window=WINDOW_SIZE, min_periods=1, center=False).min()
     idf['amplight'] = idf['maxlight'] - idf['minlight']
 
+    # new features 22.10.17
+    idf['gcrgforce'] = roll_force.apply(GCorsRate)
+    idf['mcrgforce'] = roll_force.apply(MCorsRate)
+    idf['mcrgyro'] = roll_force.apply(MCorsRate)
+
     idf.fillna(method='ffill', axis=0, inplace=True)
 
     return idf
@@ -246,6 +273,12 @@ def getLatest():
     req = urllib2.Request('https://us-central1-sensors-efc67.cloudfunctions.net/latest')
     response = urllib2.urlopen(req)
     return response.read()
+
+def getTrain():
+    req = urllib2.Request('https://us-central1-sensors-efc67.cloudfunctions.net/train')
+    response = urllib2.urlopen(req)
+    return response.read()
+
 
 def readCsvString(data):
    dataio = StringIO(data)
@@ -280,14 +313,14 @@ def plot(data):
     #plt.axis([-1,7,-10,10])
     plt.ion()
     plt.show()
-    plt.plot(data.alight, 'b') #data.time,
+    plt.plot(data.agyro, 'b') #data.time,
     plt.draw()
     plt.pause(0.001)
 
 ## main loop
 DEBUG = False
-modelFile= r'model/xgb-light.pickle.dat' ##  'r'model/xgb-light.pickle.dat'
-rfmodelFile= r'model/rf-light.pickle.dat' ##  'r'model/xgb-light.pickle.dat'
+modelFile= r'model/xgb-no-light.pickle.dat' ##  'r'model/xgb-light.pickle.dat'
+rfmodelFile= r'model/rf.pickle.dat' ##  'r'model/xgb-light.pickle.dat'
 
 
 print ("loading models : ",modelFile)
@@ -320,13 +353,13 @@ while True :
     rfmode = Counter(rfpredNames)
     print 'rf : ' , rfmode
 
-    ## trace("predict xgb")
-    ## pred = predict(xgbloaded,tdf)
+    trace("predict xgb")
+    pred = predict(xgbloaded,tdf)
 
     # convert to mode names and print counts for each predicted mode
-    ## predNames = [DEVICE_MODE_LABELS[x] for x in pred]
-    ## mode = Counter(predNames)
-    ##  print 'xgb: ' , mode
+    predNames = [DEVICE_MODE_LABELS[x] for x in pred]
+    mode = Counter(predNames)
+    print 'xgb: ' , mode
 
     # Wait for 2 seconds
     time.sleep(2.0)
