@@ -40,6 +40,7 @@ PEAKS_WINDOW_SIZE = 5*WINDOW_SIZE  ## sliding window size for peaks count featur
 DEVICE_MODE_LABELS = ['pocket','swing','texting','talking','whatever']
 USER_MODE_LABELS = ['walking','fastwalking','stairs','static','whatever']
 
+"""
 FEATURES = [#'timestamp',
             'agforce','agyro',               ## avarage
             'mgforce','mgyro',               ## median
@@ -64,6 +65,33 @@ FEATURES = [#'timestamp',
             'minlight',
             'amplight'
 ]
+"""
+
+FEATURES = ['agforce','agyro',               ## avarage
+            'mgforce','mgyro',               ## median
+            'vgforce','vgyro',               ## variance
+            #'iqrforce','iqqgyro',            ## iqr
+            #'entforce','entgyro',            ## entropy
+            #'gforcegyrocorr',               ## correlation
+            #'skforce', 'skgyro',             ## skewness
+            #'kuforce','kugyro',              ## kurtosis
+            #'MultiGyroAcc',                  ## max  gyro * max acc
+            'maxgforce','maxgyro',           ## max
+            #'maxgforceabs','maxgyroabs',     ## abs max
+            'mingforce','mingyro',           ## min
+            #'mingforceabs','mingyroabs',     ## abs min
+            'ampgforce','ampgyro' ,           ## amplitude |max - min|
+            'peaksgforce','peaksgyro',       ## peaks count in PEAKS_WINDOW_SIZE
+            'light' ,                         ## embient light sensor
+             'alight',
+             'mlight',
+             'vlight',
+             'maxlight',
+             'minlight',
+             'amplight'
+]
+
+
 ## Calulates high level features and add to given data frame add norm feature for g-force , gyro vectors
 ## calculates additional statistics features on the norm properties using sliding window fill NaN values
 def RollingPercentile(values,a):
@@ -252,16 +280,19 @@ def plot(data):
     #plt.axis([-1,7,-10,10])
     plt.ion()
     plt.show()
-    plt.plot(data.agyro, 'b') #data.time,
+    plt.plot(data.alight, 'b') #data.time,
     plt.draw()
     plt.pause(0.001)
 
 ## main loop
 DEBUG = False
 modelFile= r'model/xgb-light.pickle.dat' ##  'r'model/xgb-light.pickle.dat'
+rfmodelFile= r'model/rf-light.pickle.dat' ##  'r'model/xgb-light.pickle.dat'
 
-print ("loading model : ",modelFile)
+
+print ("loading models : ",modelFile)
 xgbloaded = loadModel(modelFile)
+rfloaded = loadModel(rfmodelFile)
 
 plt.ion()
 plt.show()
@@ -279,15 +310,23 @@ while True :
 
     trace("select relevant features ")
     tdf = df[FEATURES]
+    tdf.fillna(value=0 , axis=0, inplace=True) # method='bfill',
+    # print tdf.head(100)
 
     plot(tdf)
 
-    trace("predict ")
-    pred = predict(xgbloaded,tdf)
+    forest_val = rfloaded.predict(tdf)
+    rfpredNames = [DEVICE_MODE_LABELS[x] for x in forest_val]
+    rfmode = Counter(rfpredNames)
+    print 'rf : ' , rfmode
+
+    ## trace("predict xgb")
+    ## pred = predict(xgbloaded,tdf)
+
     # convert to mode names and print counts for each predicted mode
-    predNames = [DEVICE_MODE_LABELS[x] for x in pred]
-    mode = Counter(predNames)
-    print mode
+    ## predNames = [DEVICE_MODE_LABELS[x] for x in pred]
+    ## mode = Counter(predNames)
+    ##  print 'xgb: ' , mode
 
     # Wait for 2 seconds
     time.sleep(2.0)
