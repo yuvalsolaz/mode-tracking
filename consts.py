@@ -93,3 +93,23 @@ BAROMETER_FEATURES = ['ampbaro', 'vbaro', 'mcrbaro', 'enybaro', 'smabaro',  ## b
                       'amAccBaro', 'amBaroGyro', 'MultiVarBaroAcc', 'MultiVarBaroGyro']  ## baro cross sensor features
 
 FEATURES = ACC_FEATURES + GYRO_FEATURES + COMPONENTS_FEATURES + CROSS_SENSORS_FEATURES
+
+## xgboost
+xgboostParams = {'objective':'multi:softprob',
+                    ## 'silent': 1,       # logging mode - quiet
+                    ##  'eta': 0.3,          # the training step for each iteration
+                    ##  'learning_rate':0.2,
+                    ## 'subsample':0.8,
+                    ## 'colsample_bytree':0.9,
+                    ## 'colsample_bylevel':0.7,
+                    'max_depth':3,        # the maximum depth of each tree
+                    ## 'nthread':4,
+                    ## 'eval_metric':'mlogloss',
+                    ## 'n_estimators':100,
+                    'num_class':4,        # the number of classes that exist in this datset
+                    'seed':1234}
+xgboostNum_round = 120  # the number of training iterations
+xgboostEarlyStoppingRounds=20 ## TODO :check results with this parameter
+
+## random forest :
+

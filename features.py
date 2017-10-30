@@ -1,39 +1,37 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Oct 16 15:15:43 2017
 
-"""
-###############################################################################
-import os
 import pandas as pd
 import numpy as np
-import urllib2
 
 from detect_peaks import detect_peaks
 from pandas import rolling_median
 
-from const import *
+from consts import *
 
 ## Functions
 def RollingPercentile(values,a):
     res = np.percentile(values,a)
     return res
+
 def RollingEntropy(values):
     res = (-values*np.log2(values)).sum(axis=0)
     return res
+
 def RollingEnergy(values):
     N = len(values)
     res = np.sum(np.abs(values) ** 2) / N
 #    res = (-values*np.log2(values)).sum(axis=0)
     return res
+
 def NormValues(values):
     Res = values/values.max()
     return Res
+
 def LowPassFilter(values):
     threshold = values.mean()+3*values.std()
     ResE = rolling_median(values, window=15, center=True).fillna(method='bfill').fillna(method='ffill')
     #ResE = NormValues(ResEtemp)
     return ResE
+
 def RemoveOutlier (values):
     threshold = values.mean()+3*values.std()
     ResEtemp = rolling_median(values, window=15, center=True).fillna(method='bfill').fillna(method='ffill')
@@ -43,27 +41,33 @@ def RemoveOutlier (values):
     values[outlier_idx] = threshold
     ##ResE = NormValues(ResEtemp)
     return values
+
  # Average absoulute difference
 def AveAbsDiff(values):
     res = np.mean(np.abs(values - values.mean()))
     return res
+
 # Signal Magnitude Area
 def SigMagArea(values):
     res = np.sum(values.mean())
     return res
+
 # Zero crossing rate
 def ZeroCorsRate(values):
     res = (np.nonzero(np.diff(values>0))[0]).size
     return res
+
 # g-crossing rate
 def GCorsRate(values):
     res = (np.nonzero(np.diff(values>1))[0]).size
     return res
+
 # medain-crossing rate
 def MCorsRate(values):
     tem = np.median(values)
     res = (np.nonzero(np.diff(values>tem))[0]).size
     return res
+
 ## peaks detection :
 def peaks(values):
     mph = 1.1 #0 ## minimum peak height
@@ -95,18 +99,14 @@ def window_correlation(a,window_size):
        print (window_correlation(v,4))
 
 
-def addFeatures(_rdf,g = 1.0):
+def addFeatures(idf,g = 1.0):
 
-    idf = pd.DataFrame()
-
-    idf['timestamp'] = _rdf['time']
-
-    gfx = _rdf['gfx'] / g
-    gfy = _rdf['gFy'] / g
-    gfz = _rdf['gFz'] / g
+    gfx = idf['gfx'] / g
+    gfy = idf['gFy'] / g
+    gfz = idf['gFz'] / g
 
     # remove outliers
-    rawgyro = np.sqrt(_rdf['wx']**2 + _rdf['wy']**2 + _rdf['wz']**2)
+    rawgyro = np.sqrt(idf['wx']**2 + idf['wy']**2 + idf['wz']**2)
     idf['gyro'] =RemoveOutlier(rawgyro)
     rawforce = np.sqrt(gfx**2 + gfy**2 + gfz**2)
     idf['gforce'] = RemoveOutlier(rawforce)
@@ -143,7 +143,6 @@ def addFeatures(_rdf,g = 1.0):
 
     roll_force = idf['gforce'].rolling(window=WINDOW_SIZE,min_periods=1,center=False)
     roll_gyro = idf['gyro'].rolling(window=WINDOW_SIZE,min_periods=1,center=False)
-
     ## iqr calculations:
 
     q25 = roll_force.apply(RollingPercentile, [25.0])
@@ -286,9 +285,9 @@ def addFeatures(_rdf,g = 1.0):
     idf['peakfzforce'] = idf['fzforce'].rolling(window=PEAKS_WINDOW_SIZE,min_periods=1 ,center=False).apply(peaks)
 
     ## gyro comp
-    idf['wxgyro'] = RemoveOutlier(_rdf['wx'])
-    idf['wygyro'] = RemoveOutlier(_rdf['wy'])
-    idf['wzgyro'] = RemoveOutlier(_rdf['wz'])
+    idf['wxgyro'] = RemoveOutlier(idf['wx'])
+    idf['wygyro'] = RemoveOutlier(idf['wy'])
+    idf['wzgyro'] = RemoveOutlier(idf['wz'])
     roll_wxgyro = idf['wxgyro'].rolling(window=WINDOW_SIZE,min_periods=1,center=False)
     roll_wygyro = idf['wygyro'].rolling(window=WINDOW_SIZE,min_periods=1,center=False)
     roll_wzgyro = idf['wzgyro'].rolling(window=WINDOW_SIZE,min_periods=1,center=False)
@@ -330,51 +329,3 @@ def addFeatures(_rdf,g = 1.0):
 
     idf.fillna(method='ffill', axis=0, inplace=True)
     return idf
-
-def loadFile(root,file):
-    data=pd.read_csv(os.path.join(root,file))
-    if len(data) < 400 :
-        print (' only ' , len(data) , ' samples in file ', file , ' pass ')
-        return pd.DataFrame()
-
-    print('loading : ' , file)
-
-    print('loading : ' , len(data) , ' samples from ', file)
-
-    ## usefull property :
-    data['source']=file
-
-    ## default label values in case file name not contains label
-    data['devicemodeDescription']=DEVICE_MODE_LABELS[-1] ## 'whatever' label
-    data['devicemode'] = len(DEVICE_MODE_LABELS)
-
-    ## search device mode label in file name and add as new properties :
-    for label in DEVICE_MODE_LABELS:
-        if label.lower() in file.lower():
-            data['devicemodeDescription']=label         ## label name
-            data['devicemode'] = DEVICE_MODE_LABELS.index(label)    ## label index
-            break
-
-    ## add high level features
-    addFeatures(data)
-
-    ## print( len(data) , ' samples loaded ')
-    ## print('all records labeld as ', data['devicemodeDescription'][0])
-
-    ## crop samples from start and from the end of the file :
-    margin = min(len(data) / 2 - 1 , FILE_MARGINES)
-    data.drop(data.index[range(0,margin)],axis=0,inplace=True)
-    data.drop(data.index[range(-margin,-1)],axis=0,inplace=True)
-    ##  print(len(data) , ' samples after cropping ' , margin , 'samples from start-end of the file  ')
-    return data
-
-
-def loadFiles(inputDir):
-    print ('loading data from : ' , inputDir )
-    res =  pd.concat([loadFile(inputDir,f) for f in os.listdir(inputDir) if f.lower().endswith('.csv')])
-    print (len(res) , ' samples loaded ')
-
-def loadFirebase():
-    req = urllib2.Request('https://us-central1-sensors-efc67.cloudfunctions.net/trainingData')
-    response = urllib2.urlopen(req)
-    return response.read()

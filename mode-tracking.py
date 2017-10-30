@@ -1,40 +1,22 @@
-import os
-import pandas as pd
-from pandas import rolling_median
+# load data :
+import loadData
+
+# feature engineering :
+from consts import *
+import features
+
+## prediction :
 import numpy as np
-
-# Visualisation
-import matplotlib.pyplot as plt
-from detect_peaks import detect_peaks
-
 import xgboost as xgb
-import loadFiles
-from const import *
 
-## get latest sensors samples in json format
-import urllib2
-import sys
+# Visualisation :
+import matplotlib.pyplot as plt
 
-if sys.version_info[0] < 3:
-    from StringIO import StringIO
-else:
-    from io import StringIO
-
-def getLatest():
-    req = urllib2.Request('https://us-central1-sensors-efc67.cloudfunctions.net/latest')
-    response = urllib2.urlopen(req)
-    return response.read()
-
-
-def readCsvString(data):
-   dataio = StringIO(data)
-   dataFrame = pd.read_csv(dataio, sep=",")
-   dataFrame.columns = ['time','gfx', 'gFy','gFz','wx','wy','wz','I']
-   return dataFrame
 
 
 # calssification
 ## ====================================================================================================================
+
 # load model from file
 import time
 import pickle
@@ -68,7 +50,6 @@ DEBUG = False
 modelFile= r'model/xgb-no-light.pickle.dat' ##  'r'model/xgb-light.pickle.dat'
 rfmodelFile= r'model/rf.pickle.dat' ##  'r'model/xgb-light.pickle.dat'
 
-
 print ("loading models : ",modelFile)
 xgbloaded = loadModel(modelFile)
 rfloaded = loadModel(rfmodelFile)
@@ -78,14 +59,14 @@ plt.show()
 
 while True :
     trace("fetch sensor data " )
-    sensorData = getLatest()
+    sensorData = loadData.getLatest()
 
     trace("convert to dataFrame ")
-    rdf = readCsvString(sensorData)
+    rdf = loadData.csvStringToDataframe(sensorData)
     trace(str(len(rdf)) + ' sampls loaded ')
 
     trace("add features ")
-    df = loadFiles.addFeatures(rdf)
+    df = features.addFeatures(rdf)
 
     trace("select relevant features ")
     tdf = df[FEATURES]
