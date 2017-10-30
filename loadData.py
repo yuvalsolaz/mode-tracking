@@ -11,6 +11,8 @@ import urllib2
 import sys
 import json
 
+import features
+
 if sys.version_info[0] < 3:
     from StringIO import StringIO
 else:
@@ -68,8 +70,9 @@ def jsonToDataframe(jsonStr):
 
 def loadFiles(inputDir):
     print ('loading data from : ' , inputDir )
-    res =  pd.concat([loadFile(inputDir,f) for f in os.listdir(inputDir) if f.lower().endswith('.csv')])
-    print (len(res) , ' samples loaded ')
+    data =  pd.concat([loadFile(inputDir,f) for f in os.listdir(inputDir) if f.lower().endswith('.csv')])
+    print (len(data) , ' samples loaded ')
+    return data
 
 def loadFile(root,file):
     data=pd.read_csv(os.path.join(root,file))
@@ -88,24 +91,24 @@ def loadFile(root,file):
     data.drop('time',axis=1)
 
     ## default label values in case file name not contains label
-    data['devicemodeDescription']=DEVICE_MODE_LABELS[-1] ## 'whatever' label
-    data['devicemode'] = len(DEVICE_MODE_LABELS)
+    data['devicemodeDescription']=consts.DEVICE_MODE_LABELS[-1] ## 'whatever' label
+    data['devicemode'] = len(consts.DEVICE_MODE_LABELS)
 
     ## search device mode label in file name and add as new properties :
-    for label in DEVICE_MODE_LABELS:
+    for label in consts.DEVICE_MODE_LABELS:
         if label.lower() in file.lower():
             data['devicemodeDescription']=label         ## label name
-            data['devicemode'] = DEVICE_MODE_LABELS.index(label)    ## label index
+            data['devicemode'] = consts.DEVICE_MODE_LABELS.index(label)    ## label index
             break
 
     ## add high level features
-    addFeatures(data)
+    features.addFeatures(data)
 
     ## print( len(data) , ' samples loaded ')
     ## print('all records labeld as ', data['devicemodeDescription'][0])
 
     ## crop samples from start and from the end of the file :
-    margin = min(len(data) / 2 - 1 , FILE_MARGINES)
+    margin = min(len(data) / 2 - 1 , consts.FILE_MARGINES)
     data.drop(data.index[range(0,margin)],axis=0,inplace=True)
     data.drop(data.index[range(-margin,-1)],axis=0,inplace=True)
     ##  print(len(data) , ' samples after cropping ' , margin , 'samples from start-end of the file  ')

@@ -47,8 +47,8 @@ def plot(data):
 
 ## main loop
 DEBUG = False
-modelFile= r'model/xgb-no-light.pickle.dat' ##  'r'model/xgb-light.pickle.dat'
-rfmodelFile= r'model/rf.pickle.dat' ##  'r'model/xgb-light.pickle.dat'
+modelFile= r'model/xgb-model.dat' ##  'r'model/xgb-light.pickle.dat'
+rfmodelFile= r'model/rf-model.dat' ##  'r'model/xgb-light.pickle.dat'
 
 print ("loading models : ",modelFile)
 xgbloaded = loadModel(modelFile)

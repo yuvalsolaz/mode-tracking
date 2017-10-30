@@ -37,17 +37,20 @@ def getTrainDataFromCloud():
     trainDataFeatures = features.addFeatures(trainData, g = 9.8)
     return trainDataFeatures
 
+## usage python train <optional : input directory>
+## by default load train data from cloud
+
 def run(argv):
     if len(argv) > 1:
         trainData = loadData.loadFiles(argv[1])
     else:
         trainData = getTrainDataFromCloud()
 
-    x_train =  trainData[consts.FEATURES]
+    x_train = trainData[consts.FEATURES]
     y_train = trainData.devicemode
 
-    trainXgboost(x_train, y_train, r'xgb-model.dat')
-    trainRF(x_train, y_train, r'rf-model.dat')
+    trainXgboost(x_train, y_train, r'model/xgb-model.dat')
+    trainRF(x_train, y_train, r'model/rf-model.dat')
 
 ## main
 import sys
