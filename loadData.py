@@ -48,21 +48,21 @@ def getTrainingData():
 ## convert json to data frame :
 ##
 def jsonToDataframe(jsonStr):
+    dataFrame = pd.DataFrame()
     jsonDict = json.loads(jsonStr)
-    dataFrame = csvStringToDataframe(jsonDict[0]['data'])
+    for i in range(0,len(jsonDict)):
+        rec = jsonDict[i]
+        df = csvStringToDataframe(rec['data'])
+        df['timestamp'] = df['time']  ## naming conventions
+        df.drop('time',axis=1,inplace=True)
+        modeName = rec['mode'] ## mode name
+        if modeName == 'text':
+            modeName = 'texting'
+        df['devicemodeDescription'] = modeName
+        df['devicemode'] = consts.DEVICE_MODE_LABELS.index(modeName)  ## mode index
+        dataFrame = pd.concat([dataFrame,df])
 
-    dataFrame['timestamp'] = dataFrame['time']  ## naming conventions
-    dataFrame.drop('time',axis=1,inplace=True)
-
-    modeName = jsonDict[0]['mode'] ## mode name
-    if modeName == 'text':
-        modeName = 'texting'
-    dataFrame['devicemodeDescription'] = modeName
-    dataFrame['devicemode'] = consts.DEVICE_MODE_LABELS.index(modeName)  ## mode index
-
-    print dataFrame.head()
-
-    #dataFrame = pd.concat([adataFrame, gdataFrame], axis=1)
+    print (len(dataFrame), ' records loaded ')
     return dataFrame
 
 ## load trainig data from csv files
@@ -81,7 +81,6 @@ def loadFile(root,file):
         return pd.DataFrame()
 
     print('loading : ' , file)
-
     print('loading : ' , len(data) , ' samples from ', file)
 
     ## usefull property :

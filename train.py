@@ -30,7 +30,6 @@ def trainRF(x_train, y_train, outputModelFile = '/dev/null'):
 
 def getTrainDataFromCloud():
     trainDataString = loadData.getTrainingData()
-    print ( len(trainDataString) , ' samples loaded from fire base ')
     trainData = loadData.jsonToDataframe(trainDataString)
 
     # add features
