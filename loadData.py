@@ -32,7 +32,7 @@ def getLatest():
 def csvStringToDataframe(csvStr):
    dataio = StringIO(csvStr)
    dataFrame = pd.read_csv(dataio, sep=",")
-   dataFrame.columns = ['time','gfx', 'gFy','gFz','wx','wy','wz','I']
+   dataFrame.columns = ['timestamp','gfx', 'gFy','gFz','wx','wy','wz','I']
    return dataFrame
 
 
@@ -53,8 +53,6 @@ def jsonToDataframe(jsonStr):
     for i in range(0,len(jsonDict)):
         rec = jsonDict[i]
         df = csvStringToDataframe(rec['data'])
-        df['timestamp'] = df['time']  ## naming conventions
-        df.drop('time',axis=1,inplace=True)
         modeName = rec['mode'] ## mode name
         if modeName == 'text':
             modeName = 'texting'

@@ -11,15 +11,14 @@ import pickle
 import consts
 import loadData
 
-def test(x_test,
-         y_test, modelFile, xgbModel=False):
+def test(x_test, y_test, modelFile, xgbModel=False):
     loaded_model = pickle.load(open(modelFile, "rb"))
     if xgbModel:
         dtest = xgb.DMatrix(x_test)
         preds = loaded_model.predict(dtest)
     else:
         preds = loaded_model.predict(x_test)
-    best_preds = np.asarray([np.argmax(line) for line in preds])
+    best_preds = np.asarray([np.argmax(line) for line in preds]) if xgbModel else preds
     print (accuracy_score(y_test,best_preds))
 
     print(classification_report(y_pred=best_preds, y_true=y_test))

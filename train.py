@@ -3,6 +3,7 @@ from sklearn.ensemble import RandomForestClassifier
 import xgboost as xgb
 
 ## save model :
+import os
 import pickle
 
 # local modules
@@ -33,7 +34,7 @@ def getTrainDataFromCloud():
     trainData = loadData.jsonToDataframe(trainDataString)
 
     # add features
-    trainDataFeatures = features.addFeatures(trainData, g = 9.8)
+    trainDataFeatures = features.addFeatures(trainData, g=9.8)
     return trainDataFeatures
 
 ## usage python train <optional : input directory>
@@ -48,8 +49,9 @@ def run(argv):
     x_train = trainData[consts.FEATURES]
     y_train = trainData.devicemode
 
-    trainXgboost(x_train, y_train, r'model/xgb-model.dat')
-    trainRF(x_train, y_train, r'model/rf-model.dat')
+    modelDir = str('model') if len(argv) > 1 else  str('cloud-model')
+    trainXgboost(x_train, y_train, os.path.join(modelDir ,'xgb-model.dat'))
+    trainRF(x_train, y_train, os.path.join(modelDir, 'rf-model.dat'))
 
 ## main
 import sys
