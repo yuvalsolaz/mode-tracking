@@ -1,16 +1,18 @@
-# load data :
-import loadData
-
-# feature engineering :
-from consts import *
-import features
-
 ## prediction :
 import numpy as np
 import xgboost as xgb
 
 # Visualisation :
 import matplotlib.pyplot as plt
+
+import pandas as pd
+# load data :
+import loadData
+
+# feature engineering :
+import consts
+import features
+
 
 
 
@@ -41,11 +43,12 @@ def plot(data):
     #plt.axis([-1,7,-10,10])
     plt.ion()
     plt.show()
-    plt.plot(data.agyro, 'b') #data.time,
+    plt.plot(data.timestamp,data.wx,'b') #data.time,
     plt.draw()
     plt.pause(0.001)
 
 ## main loop
+
 DEBUG = False
 modelFile= r'model/xgb-model.dat' ##  'r'model/xgb-light.pickle.dat'
 rfmodelFile= r'model/rf-model.dat' ##  'r'model/xgb-light.pickle.dat'
@@ -57,38 +60,60 @@ rfloaded = loadModel(rfmodelFile)
 plt.ion()
 plt.show()
 
+## save 3 windows length history :
+last_samples = pd.DataFrame()
+
 while True :
     trace("fetch sensor data " )
     sensorData = loadData.getLatest()
 
     trace("convert to dataFrame ")
-    rdf = loadData.csvStringToDataframe(sensorData)
-    trace(str(len(rdf)) + ' sampls loaded ')
+    samples = loadData.csvStringToDataframe(sensorData)
+    trace(str(len(samples)) + ' samples loaded ')
+
+    # continue on first loop entry
+    if len(last_samples) == 0:
+        last_samples = samples
+        continue
+
+    ## shift sample timestamp forward to fit last_samples
+    shifted_samples = samples.copy(deep=True)
+    shifted_samples['timestamp'] = samples['timestamp'] + samples['timestamp'].max()
+
+    ## combine samples with last_samples :
+    combined_samples = pd.concat([last_samples,shifted_samples])
+    plot(combined_samples)
 
     trace("add features ")
-    df = features.addFeatures(rdf)
+    combined_ftrs = features.addFeatures(combined_samples,g=9.8)
 
     trace("select relevant features ")
-    tdf = df[FEATURES]
-    tdf.fillna(value=0 , axis=0, inplace=True) # method='bfill',
-    # print tdf.head(100)
+    selected_ftrs = combined_ftrs[consts.FEATURES]
+    selected_ftrs.fillna(value=0 , axis=0, inplace=True) # method='bfill',
 
-    plot(tdf)
+    ## remove boundries before prediction
+    boundery = 50 ## consts.WINDOW_SIZE / 2.0
+    central_selected_ftrs = selected_ftrs[boundery:-boundery]
 
-    forest_val = rfloaded.predict(tdf)
-    rfpredNames = [DEVICE_MODE_LABELS[x] for x in forest_val]
+    # predict  :
+    forest_val = rfloaded.predict(central_selected_ftrs)
+    rfpredNames = [consts.DEVICE_MODE_LABELS[x] for x in forest_val]
     rfmode = Counter(rfpredNames)
     print 'rf : ' , rfmode
 
     trace("predict xgb")
-    pred = predict(xgbloaded,tdf)
+    pred = predict(xgbloaded, central_selected_ftrs)
+
+    # save for next time :
+    last_samples = samples
 
     # convert to mode names and print counts for each predicted mode
-    predNames = [DEVICE_MODE_LABELS[x] for x in pred]
+    predNames = [consts.DEVICE_MODE_LABELS[x] for x in pred]
     mode = Counter(predNames)
     print 'xgb: ' , mode
 
-    # Wait for 2 seconds
+    selected_mode = max(mode)
+
     time.sleep(2.0)
 
 
