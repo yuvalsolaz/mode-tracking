@@ -23,7 +23,7 @@ def trainXgboost(x_train, y_train, outputModelFile = '/dev/null'):
 # train random forest classifier and save model to file
 def trainRF(x_train, y_train, outputModelFile = '/dev/null'):
     fx_train = x_train.fillna(value=0, axis=0)
-    rf = RandomForestClassifier()
+    rf = RandomForestClassifier(n_estimators=consts.n_estimators)
     rf.fit(fx_train, y_train)
     ## save model
     pickle.dump(rf, open(outputModelFile, "wb"))

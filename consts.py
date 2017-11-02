@@ -112,4 +112,9 @@ xgboostNum_round = 120  # the number of training iterations
 xgboostEarlyStoppingRounds=20 ## TODO :check results with this parameter
 
 ## random forest :
+n_estimators=1024
+max_features='sqrt'
+max_depth=None
+max_leaf_nodes=None
+
 
