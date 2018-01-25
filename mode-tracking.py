@@ -68,7 +68,7 @@ while True :
     sensorData = loadData.getLatest()
 
     trace("convert to dataFrame ")
-    samples = loadData.csvStringToDataframe(sensorData)
+    samples = loadData.csvStringToDataframe(sensorData.decode("ascii"))
     trace(str(len(samples)) + ' samples loaded ')
 
     # continue on first loop entry
