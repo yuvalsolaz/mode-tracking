@@ -50,8 +50,8 @@ def plot(data):
 ## main loop
 
 DEBUG = False
-modelFile= r'model/xgb-model.dat' ##  'r'model/xgb-light.pickle.dat'
-rfmodelFile= r'model/rf-model.dat' ##  'r'model/xgb-light.pickle.dat'
+modelFile= r'cloud-model/xgb-model.dat' ##  'r'model/xgb-light.pickle.dat'
+rfmodelFile= r'cloud-model/rf-model.dat' ##  'r'model/xgb-light.pickle.dat'
 
 print ("loading models : ",modelFile)
 xgbloaded = loadModel(modelFile)
@@ -99,7 +99,7 @@ while True :
     forest_val = rfloaded.predict(central_selected_ftrs)
     rfpredNames = [consts.DEVICE_MODE_LABELS[x] for x in forest_val]
     rfmode = Counter(rfpredNames)
-    print 'rf : ' , rfmode
+    print ('rf : ' , rfmode)
 
     trace("predict xgb")
     pred = predict(xgbloaded, central_selected_ftrs)
@@ -110,7 +110,7 @@ while True :
     # convert to mode names and print counts for each predicted mode
     predNames = [consts.DEVICE_MODE_LABELS[x] for x in pred]
     mode = Counter(predNames)
-    print 'xgb: ' , mode
+    print('xgb: ' , mode)
 
     selected_mode = max(mode)
 

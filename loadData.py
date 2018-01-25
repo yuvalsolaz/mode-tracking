@@ -7,7 +7,9 @@ Created on Mon Oct 16 15:15:43 2017
 import pandas as pd
 
 import os
-import urllib2
+
+import urllib.request as urllib2 ## urllib2 as urllib for python 2.7
+
 import sys
 import json
 
