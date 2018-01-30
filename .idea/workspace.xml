@@ -2,10 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64db2749-37fb-4301-b0d8-19a1bb24ae74" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/consts.py" afterPath="$PROJECT_DIR$/consts.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloud-model/rf-model.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloud-model/xgb-model.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/LeftHandTextingNormalAlex.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/PocketLeftNormalWalkAlex.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/PocketLeftNormalWalkAlexPlas.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/PocketLeftNormalWalkNight7.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/PocketWalkingNormalYuval.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/SwingLeftHandNormalWalkAlex.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/SwingRightNormalWalkNir.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TalkingLeftHandNight1Fast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TalkingLeftNormalWalkAlex.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TalkingLeftNornalNightMalka.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TextingLeftNightNormalWalkMalka.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TextingLeftNightNormalWalkMalka2.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TextingLeftNormalWalkNir.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TextingWalkingNormalYuval.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/alex-htc-pocket-walking-2017-09-1114.54.57.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/alex-htc-swing-walking-2017-09-1115.00.28.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/alon-lg2-pocket-walking-2017-09-1113.12.36.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/alon-lg2-texting-walking-2017-09-1016.39.42.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/ariella_lg3_swing_2017-09-1215.45.47.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/ariella_lg3_texting_2017-09-1215.42.51.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/boris-lg3-texting-walking-2017-09-1108.17.25.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/miri-htc-pocket-walking-2017-09-1113.12.35.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/miri-htc-texting-walking-2017-09-1113.03.40.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/nisan-S6-texting-walking-2017-09-1215.43.03.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lstmmodel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/LeftPocketJeansNormalWalk.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/LeftPocketNormallWalk2.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/PocketLeftNightFast1.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/PocketLeftNightFast2.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/PocketLeftNormalWalkSport1.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/PocketLeftNormalWalkSport2.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/RightPocketFast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftFastWalkNight151017.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandFast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandFromSignBackFast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandNight12Fast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandNight1Fast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandNight2Fast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandNight3Fast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandNightFast2.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandNormalWalkNight1.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandToSignFast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftNormalWalk1.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftNormalWalk2.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingRightPhoneDownFast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TalkingLeftHand5Fast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TalkingLeftHand6Fast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TalkingLeftHandFromSignBackFast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TalkingLeftHandNight2Fast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TalkingLeftHandToSignChexkFast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TextingLeftHand5Fast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TextingLeftHandMore2Fast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TextingLeftHandMoreFast.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TextingLeftHandNormalWalkNight1.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TextingLeftHandNormalWalkNight2.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TextingLeftHandSignBackFast.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/rf-model.dat" afterPath="$PROJECT_DIR$/model/rf-model.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train.py" afterPath="$PROJECT_DIR$/train.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/xgb-model.dat" afterPath="$PROJECT_DIR$/model/xgb-model.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loadData.py" afterPath="$PROJECT_DIR$/loadData.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,24 +72,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="export.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/export.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="mode-tracking.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mode-tracking.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1440">
-              <caret line="94" column="17" lean-forward="false" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
+            <state relative-caret-position="555">
+              <caret line="103" column="24" lean-forward="true" selection-start-line="103" selection-start-column="24" selection-end-line="103" selection-end-column="24" />
               <folding>
                 <element signature="e#16#34#0" expanded="true" />
               </folding>
@@ -42,18 +89,8 @@
       <file leaf-file-name="features.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/features.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="consts.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/consts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="114" column="12" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="12" />
+            <state relative-caret-position="205">
+              <caret line="95" column="15" lean-forward="true" selection-start-line="95" selection-start-column="15" selection-end-line="95" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -62,7 +99,7 @@
       <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
+            <state relative-caret-position="-108">
               <caret line="25" column="64" lean-forward="false" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
               <folding>
                 <element signature="e#11#62#0" expanded="true" />
@@ -71,11 +108,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="consts.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/consts.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1458">
+              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="504">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="49" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lstmmodel.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lstmmodel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="404">
+              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loadData.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loadData.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -84,7 +153,7 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
+            <state relative-caret-position="324">
               <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
               <folding />
             </state>
@@ -92,6 +161,11 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>batch_size</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -103,14 +177,17 @@
         <option value="$PROJECT_DIR$/mode-tracking.py" />
         <option value="$PROJECT_DIR$/consts.py" />
         <option value="$PROJECT_DIR$/train.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/lstmmodel.py" />
+        <option value="$PROJECT_DIR$/loadData.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="-4" />
+    <option name="x" value="35" />
+    <option name="y" value="153" />
     <option name="width" value="1855" />
-    <option name="height" value="1204" />
+    <option name="height" value="1176" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -129,24 +206,26 @@
     <panes>
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mode-tracking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mode-tracking" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="mode-tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mode-tracking" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -160,61 +239,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.train">
-    <configuration default="false" name="export" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/anaconda2/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="mode-tracking" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/export.py" />
-      <option name="PARAMETERS" value="/dev/null" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="mode-tracking" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/anaconda2/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="mode-tracking" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mode-tracking.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="train" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="mode-tracking" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.lstmmodel">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -280,16 +305,105 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <list size="3">
+    <configuration name="export" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda2/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mode-tracking" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/export.py" />
+      <option name="PARAMETERS" value="/dev/null" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="lstmmodel" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mode-tracking" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lstmmodel.py" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/utf8itzNewWithLight3   $PROJECT_DIR$/ValForAccGyroNoStairs" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="mode-tracking" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda2/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mode-tracking" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mode-tracking.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mode-tracking" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/ValForAccGyroNoStairs $PROJECT_DIR$/model/rf-model.dat" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mode-tracking" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train.py" />
+      <option name="PARAMETERS" value="$PROJECT_DIR$/utf8itzNewWithLight3" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.export" />
       <item index="1" class="java.lang.String" itemvalue="Python.mode-tracking" />
       <item index="2" class="java.lang.String" itemvalue="Python.train" />
+      <item index="3" class="java.lang.String" itemvalue="Python.test" />
+      <item index="4" class="java.lang.String" itemvalue="Python.lstmmodel" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.train" />
-        <item index="1" class="java.lang.String" itemvalue="Python.mode-tracking" />
-        <item index="2" class="java.lang.String" itemvalue="Python.export" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.lstmmodel" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.train" />
+        <item index="3" class="java.lang.String" itemvalue="Python.mode-tracking" />
+        <item index="4" class="java.lang.String" itemvalue="Python.export" />
       </list>
     </recent_temporary>
   </component>
@@ -310,26 +424,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1204" extended-state="6" />
-    <editor active="true" />
+    <frame x="35" y="153" width="1855" height="1176" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17789757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990655" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2797457" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32991913" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34205607" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="false" weight="0.10296496" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="2007" y="288" width="1457" height="699" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17789757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -338,9 +453,20 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="17" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="x.shape" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/export.py">
@@ -351,11 +477,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/pandas/core/indexes/base.py">
+    <entry file="file://$PROJECT_DIR$/mode-tracking.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="1468" column="0" lean-forward="false" selection-start-line="1468" selection-start-column="0" selection-end-line="1468" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="1278">
+          <caret line="94" column="17" lean-forward="false" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
+          <folding>
+            <element signature="e#16#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -367,27 +495,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mode-tracking.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1440">
-          <caret line="94" column="17" lean-forward="false" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
-          <folding>
-            <element signature="e#16#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/consts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
+        <state relative-caret-position="2052">
           <caret line="114" column="12" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="12" />
           <folding />
         </state>
@@ -395,7 +505,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="270">
           <caret line="25" column="64" lean-forward="false" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
           <folding>
             <element signature="e#11#62#0" expanded="true" />
@@ -405,9 +515,242 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstmmodel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="85" column="27" lean-forward="true" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8406">
+          <caret line="477" column="0" lean-forward="false" selection-start-line="477" selection-start-column="0" selection-end-line="477" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/export.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mode-tracking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1278">
+          <caret line="94" column="17" lean-forward="false" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
+          <folding>
+            <element signature="e#16#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2052">
+          <caret line="114" column="12" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="25" column="64" lean-forward="false" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
+          <folding>
+            <element signature="e#11#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/pandas/core/indexes/base.py" />
+    <entry file="file://$PROJECT_DIR$/features.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="871">
+          <caret line="477" column="0" lean-forward="false" selection-start-line="477" selection-start-column="0" selection-end-line="477" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/export.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="584">
+          <caret line="114" column="12" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mode-tracking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="94" column="17" lean-forward="false" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
+          <folding>
+            <element signature="e#16#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="25" column="64" lean-forward="false" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
+          <folding>
+            <element signature="e#11#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/export.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/pandas/core/indexes/base.py" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="25" column="64" lean-forward="false" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
+          <folding>
+            <element signature="e#11#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="49" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1458">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mode-tracking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="103" column="24" lean-forward="true" selection-start-line="103" selection-start-column="24" selection-end-line="103" selection-end-column="24" />
+          <folding>
+            <element signature="e#16#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="95" column="15" lean-forward="true" selection-start-line="95" selection-start-column="15" selection-end-line="95" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loadData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstmmodel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

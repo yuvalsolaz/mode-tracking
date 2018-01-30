@@ -7,7 +7,7 @@ Created on Mon Oct 16 15:15:43 2017
 import pandas as pd
 
 import os
-
+import numpy as np
 import urllib.request as urllib2 ## urllib2 as urllib for python 2.7
 
 import sys
@@ -68,13 +68,13 @@ def jsonToDataframe(jsonStr):
 ## load trainig data from csv files
 ##--------------------------------------------------------------------------------------------------------------------
 
-def loadFiles(inputDir):
+def loadFiles(inputDir, add_features = True):
     print ('loading data from : ' , inputDir )
-    data =  pd.concat([loadFile(inputDir,f) for f in os.listdir(inputDir) if f.lower().endswith('.csv')])
+    data =  pd.concat([loadFile(inputDir,f,add_features) for f in os.listdir(inputDir) if f.lower().endswith('.csv')])
     print (len(data) , ' samples loaded ')
     return data
 
-def loadFile(root,file):
+def loadFile(root,file,add_features = True):
     data=pd.read_csv(os.path.join(root,file))
     if len(data) < 400 :
         print (' only ' , len(data) , ' samples in file ', file , ' pass ')
@@ -101,7 +101,11 @@ def loadFile(root,file):
             break
 
     ## add high level features
-    features.addFeatures(data)
+    if add_features:
+        features.addFeatures(data)
+    else :
+        data['gyro'] = np.sqrt(data['wx'] ** 2 + data['wy'] ** 2 + data['wz'] ** 2)
+        data['gforce'] = np.sqrt(data['gfx'] ** 2 + data['gFy'] ** 2 + data['gFz'] ** 2)
 
     ## print( len(data) , ' samples loaded ')
     ## print('all records labeld as ', data['devicemodeDescription'][0])
