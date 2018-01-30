@@ -57,29 +57,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lstmmodel.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="lstmmodel.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstmmodel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="42" column="9" lean-forward="false" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+            <state relative-caret-position="370">
+              <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
-                <element signature="e#755#903#0" expanded="false" />
-                <element signature="e#934#1118#0" expanded="false" />
-                <element signature="e#1288#2669#0" expanded="false" />
-                <element signature="e#2748#3164#0" expanded="false" />
-                <element signature="e#3224#3718#0" expanded="false" />
+                <element signature="e#791#939#0" expanded="false" />
+                <element signature="e#970#1154#0" expanded="false" />
+                <element signature="e#2882#3298#0" expanded="false" />
+                <element signature="e#3358#3852#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lstm.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lstm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../LSTM-Human-Activity-Recognition/lstm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2430">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="-107">
+              <caret line="90" column="22" lean-forward="true" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="26" />
+              <folding>
+                <element signature="e#1552#1575#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -479,11 +480,10 @@
           <caret line="85" column="27" lean-forward="true" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#755#903#0" expanded="false" />
-            <element signature="e#934#1118#0" expanded="false" />
-            <element signature="e#1288#2669#0" expanded="false" />
-            <element signature="e#2748#3164#0" expanded="false" />
-            <element signature="e#3224#3718#0" expanded="false" />
+            <element signature="e#791#939#0" expanded="false" />
+            <element signature="e#970#1154#0" expanded="false" />
+            <element signature="e#2882#3298#0" expanded="false" />
+            <element signature="e#3358#3852#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -709,26 +709,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lstmmodel.py">
+    <entry file="file://$PROJECT_DIR$/../LSTM-Human-Activity-Recognition/lstm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="42" column="9" lean-forward="false" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+        <state relative-caret-position="-107">
+          <caret line="90" column="22" lean-forward="true" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="26" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#755#903#0" expanded="false" />
-            <element signature="e#934#1118#0" expanded="false" />
-            <element signature="e#1288#2669#0" expanded="false" />
-            <element signature="e#2748#3164#0" expanded="false" />
-            <element signature="e#3224#3718#0" expanded="false" />
+            <element signature="e#1552#1575#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../LSTM-Human-Activity-Recognition/lstm.py">
+    <entry file="file://$PROJECT_DIR$/lstmmodel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2430">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="370">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#791#939#0" expanded="false" />
+            <element signature="e#970#1154#0" expanded="false" />
+            <element signature="e#2882#3298#0" expanded="false" />
+            <element signature="e#3358#3852#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

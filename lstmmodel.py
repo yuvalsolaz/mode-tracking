@@ -12,6 +12,7 @@ from keras.layers import Dense, Embedding
 from keras.layers import LSTM
 from keras.layers import Bidirectional
 from keras.models import model_from_json
+from keras.optimizers import Adamax
 from sklearn.model_selection import train_test_split
 import numpy as np
 import features
@@ -67,8 +68,10 @@ def runLSTM(trainSource, testSource):
     model.add(LSTM(512, input_shape=(x_train.shape[1], x_train.shape[2]),dropout=0.2,return_sequences=True,activation='relu'))
     model.add(LSTM(input_dim=512, output_dim=128,dropout=0.02,return_sequences=False,activation='relu'))
     model.add(Dense(4, activation='softmax'))
+
+    optimizer = 'adam' # Adamax(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0)
     model.compile(loss='categorical_crossentropy',
-                  optimizer='adam',
+                  optimizer=optimizer,
                   metrics=['accuracy'])
 
     print('Train...')
@@ -76,6 +79,7 @@ def runLSTM(trainSource, testSource):
           batch_size=batch_size,
           epochs=epochs,
           validation_data=(x_test, y_test))
+
     score, acc = model.evaluate(x_test, y_test,
                             batch_size=batch_size)
     print('Test score:', score)
