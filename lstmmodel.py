@@ -11,6 +11,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Embedding
 from keras.layers import LSTM
 from keras.layers import Bidirectional
+from keras.models import model_from_json
 from sklearn.model_selection import train_test_split
 import numpy as np
 import features
@@ -39,7 +40,7 @@ def toLstmFormat(data):
 
 # TODO : consts
 batch_size = 64
-epochs=3
+epochs=10
 
 sensor = ['timestamp','gfx','gFy','gFz','wx','wy','wz']
 mode   = ['devicemode']
@@ -79,18 +80,48 @@ def runLSTM(trainSource, testSource):
                             batch_size=batch_size)
     print('Test score:', score)
     print('Test accuracy:', acc)
+    return model
 
+# save model as JSON , save weights as hdf5
+def saveModel(model,outDir):
+    model_json = model.to_json()
+    json_file_name = os.path.join(outDir ,"model.json")
+    with open(json_file_name, "w") as json_file:
+        print("Save model to {}".format(json_file_name))
+        json_file.write(model_json)
+
+    # serialize weights to HDF5
+    weights_file_name = os.path.join(outDir, "model.h5")
+    print("Save weights to {}".format(weights_file_name))
+    model.save_weights(weights_file_name)
+
+# load json and create model
+def loadModel(inputDir):
+    json_file_name = os.path.join(inputDir ,"model.json")
+    print("Load model from {}".format(json_file_name))
+    json_file = open(json_file_name, 'r')
+    loaded_model_json = json_file.read()
+    json_file.close()
+    loaded_model = model_from_json(loaded_model_json)
+
+    # load weights into new model
+    weights_file_name = os.path.join(inputDir, "model.h5")
+    print("Load weights from {}".format(weights_file_name))
+    loaded_model.load_weights(weights_file_name)
+    return loaded_model
 
 def run(argv):
     if len(argv) == 3:
-        runLSTM(argv[1], argv[2])
+        model = runLSTM(argv[1], argv[2])
         return
 
     if len(argv) == 2 and argv[1] == 'cloud':
         runLSTM(None, None)
         return
 
-    print ('usage: python ' , argv[0] , ' <train directory> <test directory>')
+    print ('usage:')
+    print ('for data from files: python ' , argv[0] , ' <train directory> <test directory>')
+    print ('for data from cloud: python ' , argv[0] , ' cloud ')
 
 
 ## main
