@@ -2,68 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64db2749-37fb-4301-b0d8-19a1bb24ae74" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloud-model/rf-model.dat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cloud-model/xgb-model.dat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/LeftHandTextingNormalAlex.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/PocketLeftNormalWalkAlex.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/PocketLeftNormalWalkAlexPlas.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/PocketLeftNormalWalkNight7.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/PocketWalkingNormalYuval.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/SwingLeftHandNormalWalkAlex.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/SwingRightNormalWalkNir.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TalkingLeftHandNight1Fast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TalkingLeftNormalWalkAlex.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TalkingLeftNornalNightMalka.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TextingLeftNightNormalWalkMalka.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TextingLeftNightNormalWalkMalka2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TextingLeftNormalWalkNir.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/TextingWalkingNormalYuval.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/alex-htc-pocket-walking-2017-09-1114.54.57.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/alex-htc-swing-walking-2017-09-1115.00.28.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/alon-lg2-pocket-walking-2017-09-1113.12.36.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/alon-lg2-texting-walking-2017-09-1016.39.42.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/ariella_lg3_swing_2017-09-1215.45.47.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/ariella_lg3_texting_2017-09-1215.42.51.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/boris-lg3-texting-walking-2017-09-1108.17.25.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/miri-htc-pocket-walking-2017-09-1113.12.35.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/miri-htc-texting-walking-2017-09-1113.03.40.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ValForAccGyroNoStairs/nisan-S6-texting-walking-2017-09-1215.43.03.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lstmmodel.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/LeftPocketJeansNormalWalk.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/LeftPocketNormallWalk2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/PocketLeftNightFast1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/PocketLeftNightFast2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/PocketLeftNormalWalkSport1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/PocketLeftNormalWalkSport2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/RightPocketFast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftFastWalkNight151017.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandFast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandFromSignBackFast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandNight12Fast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandNight1Fast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandNight2Fast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandNight3Fast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandNightFast2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandNormalWalkNight1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftHandToSignFast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftNormalWalk1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingLeftNormalWalk2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/SwingRightPhoneDownFast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TalkingLeftHand5Fast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TalkingLeftHand6Fast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TalkingLeftHandFromSignBackFast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TalkingLeftHandNight2Fast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TalkingLeftHandToSignChexkFast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TextingLeftHand5Fast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TextingLeftHandMore2Fast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TextingLeftHandMoreFast.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TextingLeftHandNormalWalkNight1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TextingLeftHandNormalWalkNight2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utf8itzNewWithLight3/TextingLeftHandSignBackFast.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/rf-model.dat" afterPath="$PROJECT_DIR$/model/rf-model.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/xgb-model.dat" afterPath="$PROJECT_DIR$/model/xgb-model.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loadData.py" afterPath="$PROJECT_DIR$/loadData.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lstmmodel.py" afterPath="$PROJECT_DIR$/lstmmodel.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -131,8 +70,8 @@
       <file leaf-file-name="lstmmodel.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstmmodel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="188">
+              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -178,16 +117,16 @@
         <option value="$PROJECT_DIR$/consts.py" />
         <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/lstmmodel.py" />
         <option value="$PROJECT_DIR$/loadData.py" />
+        <option value="$PROJECT_DIR$/lstmmodel.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="35" />
-    <option name="y" value="153" />
+    <option name="y" value="125" />
     <option name="width" value="1855" />
-    <option name="height" value="1176" />
+    <option name="height" value="1204" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -322,6 +261,23 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="lstm cloud" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mode-tracking" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lstmmodel.py" />
+      <option name="PARAMETERS" value="cloud" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <configuration name="lstmmodel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -390,12 +346,13 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.export" />
-      <item index="1" class="java.lang.String" itemvalue="Python.mode-tracking" />
-      <item index="2" class="java.lang.String" itemvalue="Python.train" />
-      <item index="3" class="java.lang.String" itemvalue="Python.test" />
-      <item index="4" class="java.lang.String" itemvalue="Python.lstmmodel" />
+    <list size="6">
+      <item index="0" class="java.lang.String" itemvalue="Python.lstm cloud" />
+      <item index="1" class="java.lang.String" itemvalue="Python.export" />
+      <item index="2" class="java.lang.String" itemvalue="Python.mode-tracking" />
+      <item index="3" class="java.lang.String" itemvalue="Python.train" />
+      <item index="4" class="java.lang.String" itemvalue="Python.test" />
+      <item index="5" class="java.lang.String" itemvalue="Python.lstmmodel" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -424,18 +381,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="35" y="153" width="1855" height="1176" extended-state="0" />
+    <frame x="0" y="-4" width="1920" height="1204" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17789757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.171875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990655" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17213115" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34205607" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3579235" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="false" weight="0.10296496" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="2007" y="288" width="1457" height="699" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -460,7 +418,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="17" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -746,8 +704,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lstmmodel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="188">
+          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

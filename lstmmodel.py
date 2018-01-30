@@ -39,23 +39,27 @@ def toLstmFormat(data):
 
 # TODO : consts
 batch_size = 64
-epochs=2
+epochs=3
 
-sensor = ['time','gyro','gforce','gfx','gFy','gFz','wx','wy','wz']
-mode  = ['devicemode']
+sensor = ['timestamp','gfx','gFy','gFz','wx','wy','wz']
+mode   = ['devicemode']
 
 
 def runLSTM(trainSource, testSource):
-    print('Load train data from : {}'.format(trainSource))
+    print('Load train data from : {}'.format(trainSource if trainSource != None else ' cloud ' ))
 
-    trainData = loadSensorData(trainSource)
-    x_train , y_train = toLstmFormat(trainData)
+    data = loadSensorData(trainSource)
 
-    print('Load test data from : {}'.format(testSource))
-    testData = loadSensorData(testSource)
-    x_test , y_test = toLstmFormat(testData)
-
-    print('TODO  : cache train and test Dataframes....')
+    if testSource != None :
+        print('Load test data from : {}'.format(testSource))
+        testData = loadSensorData(testSource)
+        x_train, y_train = toLstmFormat(data)
+        x_test , y_test  = toLstmFormat(testData)
+    else :
+        print('split loaded data to train and test : ')
+        train, test = train_test_split(data, test_size=0.2)
+        x_train, y_train = toLstmFormat(train)
+        x_test , y_test = toLstmFormat(test)
 
     print('Build model...')
     model = Sequential()
