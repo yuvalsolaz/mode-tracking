@@ -1,22 +1,13 @@
 from __future__ import print_function
-import pandas as pd
-import os
-import sys
-import json
-import urllib.request as urllib2
-from io import StringIO
-import consts
-from keras.preprocessing import sequence
 from keras.models import Sequential
 from keras.layers import Dense, Embedding
 from keras.layers import LSTM
-from keras.layers import Bidirectional
+#from keras.layers import Bidirectional
 from keras.models import model_from_json
-from keras.optimizers import Adamax
+#from keras.optimizers import Adamax
+#from numpy.core.numeric import full
+from keras import callbacks
 from sklearn.model_selection import train_test_split
-import numpy as np
-import features
-from scipy import stats
 from loadData import *
 
 """Convert an iterable of indices to one-hot encoded labels."""
@@ -24,9 +15,14 @@ def indices_to_one_hot(data, nb_classes):
     targets = np.array(data).reshape(-1)
     return np.eye(nb_classes)[targets]
 
+def getLocalTrainingData(localFile):
+    fullpath = os.path.join(os.getcwd(),localFile)
+    with open(fullpath, 'r') as file:
+        return file.read()
+
 def loadSensorData(inputDir = None):
     if inputDir == None:
-        data_res = getTrainingData()
+        data_res = getLocalTrainingData('training.json')
         return jsonToDataframe(data_res)
     return loadFiles(inputDir,add_features=False)
 
@@ -40,8 +36,8 @@ def toLstmFormat(data):
 
 
 # TODO : consts
-batch_size = 64
-epochs=10
+batch_size = 128
+epochs=1000
 
 sensor = ['timestamp','gfx','gFy','gFz','wx','wy','wz']
 mode   = ['devicemode']
@@ -65,8 +61,11 @@ def runLSTM(trainSource, testSource):
 
     print('Build model...')
     model = Sequential()
-    model.add(LSTM(512, input_shape=(x_train.shape[1], x_train.shape[2]),dropout=0.2,return_sequences=True,activation='relu'))
-    model.add(LSTM(input_dim=512, output_dim=128,dropout=0.02,return_sequences=False,activation='relu'))
+##    model.add(LSTM(512, input_shape=(x_train.shape[1], x_train.shape[2]),dropout=0.2,return_sequences=True,activation='relu'))
+##    model.add(LSTM(input_dim=512, output_dim=128,dropout=0.2,return_sequences=True,activation='relu'))
+##    model.add(LSTM(input_dim=128, output_dim=64,dropout=0.02,return_sequences=False,activation='relu'))
+    model.add(LSTM(100, dropout=0.2,input_shape=(x_train.shape[1], x_train.shape[2]),return_sequences=True,activation='relu'))
+    model.add(LSTM(50 , dropout=0.2 , return_sequences=False,activation='relu'))
     model.add(Dense(4, activation='softmax'))
 
     optimizer = 'adam' # Adamax(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0)
@@ -74,11 +73,16 @@ def runLSTM(trainSource, testSource):
                   optimizer=optimizer,
                   metrics=['accuracy'])
 
+    print(model.summary())
+
     print('Train...')
+
+    tbCallBack = callbacks.TensorBoard(log_dir='./Graph', histogram_freq=0, write_graph=True, write_images=False)
     model.fit(x_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
-          validation_data=(x_test, y_test))
+          validation_data=(x_test, y_test),
+          callbacks = [tbCallBack] )
 
     score, acc = model.evaluate(x_test, y_test,
                             batch_size=batch_size)
