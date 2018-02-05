@@ -39,16 +39,22 @@ epochs=1000
 sensor = ['timestamp','gfx','gFy','gFz','wx','wy','wz']
 mode   = ['devicemode']
 
+def indices_to_one_hot(data, nb_classes):
+    targets = np.array(data).reshape(-1)
+    return np.eye(nb_classes)[targets]
+
 def toCnnFormat(data, window_size=window_size):
     assert 0 < window_size < data.shape[0]
-    xdata = data[sensor]
-    ydata = data[mode]
-    xdata = np.asarray(xdata)
-    ydata = np.asarray(ydata)
+    xdata = np.asarray(data[sensor])
+    ydata = np.asarray(data[mode])
+    ydata = indices_to_one_hot(ydata, 4)
 
     x = np.array \
         ([xdata[start:start + window_size] for start in range(0, xdata.shape[0] - window_size)]) # np.atleast_3d(
-    y = ydata[window_size:]
+
+    y = np.array \
+        ([ydata[start:start + 1] for start in range(0, ydata.shape[0] - window_size)]) # np.atleast_3d(
+
     return x, y
 
 
@@ -70,10 +76,12 @@ def runCNN(trainSource, testSource):
 
     print('Build model...')
     model = Sequential()
-    model.add(Conv1D(10 ,3 ,input_shape=x_train.shape, activation='relu'))
+    model.add(Conv1D(32 ,3 ,input_shape=(x_train.shape[1],x_train.shape[2]), activation='relu'))
     model.add(MaxPooling1D(2))  # Downsample the output of convolution by 2X.
-    model.add(Conv1D(10, 3, activation='relu'))
+    model.add(Conv1D(16, 3, activation='relu'))
     model.add(MaxPooling1D(2))  # Downsample the output of convolution by 2X.
+    model.add(Conv1D(8, 3, activation='relu'))
+    model.add(MaxPooling1D(4))  # Downsample the output of convolution by 2X.
     model.add(Dense(4, activation='softmax'))
 
 
