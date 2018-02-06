@@ -2,9 +2,12 @@ from __future__ import print_function
 from keras.models import Sequential
 from keras.layers import Dense, Embedding
 from keras.layers import LSTM
+from keras.layers import Conv1D
+from keras.layers import MaxPooling1D
+
 #from keras.layers import Bidirectional
 from keras.models import model_from_json
-#from keras.optimizers import Adamax
+from keras.optimizers import Adamax
 #from numpy.core.numeric import full
 from keras import callbacks
 from sklearn.model_selection import train_test_split
@@ -37,7 +40,7 @@ def toLstmFormat(data):
 
 # TODO : consts
 batch_size = 128
-epochs=1000
+epochs=10000
 
 sensor = ['timestamp','gfx','gFy','gFz','wx','wy','wz']
 mode   = ['devicemode']
@@ -64,11 +67,12 @@ def runLSTM(trainSource, testSource):
 ##    model.add(LSTM(512, input_shape=(x_train.shape[1], x_train.shape[2]),dropout=0.2,return_sequences=True,activation='relu'))
 ##    model.add(LSTM(input_dim=512, output_dim=128,dropout=0.2,return_sequences=True,activation='relu'))
 ##    model.add(LSTM(input_dim=128, output_dim=64,dropout=0.02,return_sequences=False,activation='relu'))
-    model.add(LSTM(100, dropout=0.2,input_shape=(x_train.shape[1], x_train.shape[2]),return_sequences=True,activation='relu'))
-    model.add(LSTM(50 , dropout=0.2 , return_sequences=False,activation='relu'))
+
+    model.add(LSTM(100, dropout=0.01 , return_sequences=True,activation='relu', input_shape=(x_train.shape[1],x_train.shape[2])))
+    model.add(LSTM(50 , dropout=0.0 , return_sequences=False,activation='relu'))
     model.add(Dense(4, activation='softmax'))
 
-    optimizer = 'adam' # Adamax(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0)
+    optimizer = Adamax(lr=0.005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0) # 'adam'
     model.compile(loss='categorical_crossentropy',
                   optimizer=optimizer,
                   metrics=['accuracy'])
@@ -78,6 +82,7 @@ def runLSTM(trainSource, testSource):
     print('Train...')
 
     tbCallBack = callbacks.TensorBoard(log_dir='./Graph', histogram_freq=0, write_graph=True, write_images=False)
+
     model.fit(x_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
