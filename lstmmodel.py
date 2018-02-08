@@ -1,16 +1,16 @@
 from __future__ import print_function
+import math
 from keras.models import Sequential
-from keras.layers import Dense, Embedding
+from keras.layers import Dense
 from keras.layers import LSTM
-from keras.layers import Conv1D
-from keras.layers import MaxPooling1D
-
-#from keras.layers import Bidirectional
 from keras.models import model_from_json
-from keras.optimizers import Adamax
-#from numpy.core.numeric import full
+from keras.optimizers import Adamax , SGD
+from keras import regularizers
 from keras import callbacks
+from keras.utils.vis_utils import plot_model
+
 from sklearn.model_selection import train_test_split
+
 from loadData import *
 
 """Convert an iterable of indices to one-hot encoded labels."""
@@ -40,10 +40,26 @@ def toLstmFormat(data):
 
 # TODO : consts
 batch_size = 128
-epochs=10000
+epochs=1000000
+lrate = 0.005
+beta_1=0.9
+beta_2=0.999
+momentum=0.9
+decay=0.0
+epsilon=None
+
+model_image = 'lstm.png'
 
 sensor = ['timestamp','gfx','gFy','gFz','wx','wy','wz']
 mode   = ['devicemode']
+
+# learning rate schedule
+def step_decay(epoch):
+	initial_lrate = 0.01
+	drop = 0.5
+	epochs_drop = 200.0
+	lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
+	return lrate
 
 
 def runLSTM(trainSource, testSource):
@@ -64,30 +80,36 @@ def runLSTM(trainSource, testSource):
 
     print('Build model...')
     model = Sequential()
-##    model.add(LSTM(512, input_shape=(x_train.shape[1], x_train.shape[2]),dropout=0.2,return_sequences=True,activation='relu'))
-##    model.add(LSTM(input_dim=512, output_dim=128,dropout=0.2,return_sequences=True,activation='relu'))
-##    model.add(LSTM(input_dim=128, output_dim=64,dropout=0.02,return_sequences=False,activation='relu'))
+    model.add(LSTM(256, dropout=0.01 , return_sequences=True,activation='relu', input_shape=(x_train.shape[1],x_train.shape[2])))
+    model.add(LSTM(128 , dropout=0.0 , return_sequences=False,activation='relu'))
+    model.add(Dense(4, activation='softmax')) #,kernel_regularizer=regularizers.l1(0.002)))
+                                            # activity_regularizer=regularizers.l1(0.01)))
 
-    model.add(LSTM(100, dropout=0.01 , return_sequences=True,activation='relu', input_shape=(x_train.shape[1],x_train.shape[2])))
-    model.add(LSTM(50 , dropout=0.0 , return_sequences=False,activation='relu'))
-    model.add(Dense(4, activation='softmax'))
+    optimizer = Adamax(lr=lrate, beta_1=beta_1, beta_2=beta_2, epsilon=epsilon, decay=decay) # 'adam'
+    ##optimizer = SGD(lr=lrate, momentum=momentum , decay=decay) # 'sgd'
 
-    optimizer = Adamax(lr=0.005, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0) # 'adam'
     model.compile(loss='categorical_crossentropy',
                   optimizer=optimizer,
                   metrics=['accuracy'])
 
     print(model.summary())
 
+    plot_model(model, to_file=model_image, show_shapes=True, show_layer_names=True)
+    print('model image : {}'.format(model_image))
+
     print('Train...')
 
+    # tensorboard callback :
     tbCallBack = callbacks.TensorBoard(log_dir='./Graph', histogram_freq=0, write_graph=True, write_images=False)
+
+    # learning schedule callback
+    lratecb = callbacks.LearningRateScheduler(step_decay)
 
     model.fit(x_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
           validation_data=(x_test, y_test),
-          callbacks = [tbCallBack] )
+          callbacks = [tbCallBack,lratecb] )
 
     score, acc = model.evaluate(x_test, y_test,
                             batch_size=batch_size)

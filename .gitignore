@@ -28,6 +28,7 @@ Graph/
 *.egg
 */model.h5
 */model.json
+*.png
 
 
 # PyInstaller
