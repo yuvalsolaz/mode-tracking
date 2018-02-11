@@ -6,8 +6,7 @@ from keras.layers import Conv1D
 from keras.layers import MaxPooling1D
 from keras.layers import Flatten
 from keras.optimizers import Adamax,SGD
-from keras.layers import Reshape
-#from keras.layers import Dropout
+from keras.layers import Dropout
 #from keras import regularizers
 
 from keras import callbacks
@@ -91,12 +90,17 @@ def runCNN(trainSource, testSource):
 
     print('Build model...')
     model = Sequential()
-    model.add(Conv1D(32, 3, padding=padding, input_shape=(x_train.shape[1], x_train.shape[2]), activation='relu'))
-    # model.add(Dropout(0.02))
-    model.add(MaxPooling1D(2))
-    model.add(Conv1D(16, 3, padding=padding, activation='relu'))
+    model.add(Conv1D(64, 3, padding=padding, input_shape=(x_train.shape[1], x_train.shape[2]), activation='relu'))
+    model.add(Dropout(0.2))
     model.add(MaxPooling1D(2))
     model.add(Conv1D(32, 3, padding=padding, activation='relu'))
+    model.add(Dropout(0.2))
+    model.add(MaxPooling1D(2))
+    model.add(Conv1D(64, 3, padding=padding, activation='relu'))
+    model.add(MaxPooling1D(2))
+    model.add(Conv1D(32, 3, padding=padding, activation='relu'))
+    model.add(MaxPooling1D(2))
+    model.add(Conv1D(16, 3, padding=padding, activation='relu'))
     model.add(MaxPooling1D(2))
     model.add(Flatten())
     model.add(Dense(4, activation='softmax'))

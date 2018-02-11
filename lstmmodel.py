@@ -55,7 +55,7 @@ mode   = ['devicemode']
 
 # learning rate schedule
 def step_decay(epoch):
-	initial_lrate = 0.01
+	initial_lrate = 0.005
 	drop = 0.5
 	epochs_drop = 200.0
 	lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
@@ -80,8 +80,8 @@ def runLSTM(trainSource, testSource):
 
     print('Build model...')
     model = Sequential()
-    model.add(LSTM(256, dropout=0.01 , return_sequences=True,activation='relu', input_shape=(x_train.shape[1],x_train.shape[2])))
-    model.add(LSTM(128 , dropout=0.0 , return_sequences=False,activation='relu'))
+    model.add(LSTM(256, dropout=0.02 , return_sequences=True,activation='relu', input_shape=(x_train.shape[1],x_train.shape[2])))
+    model.add(LSTM(128 , dropout=0.02 , return_sequences=False,activation='relu'))
     model.add(Dense(4, activation='softmax')) #,kernel_regularizer=regularizers.l1(0.002)))
                                             # activity_regularizer=regularizers.l1(0.01)))
 
@@ -109,7 +109,7 @@ def runLSTM(trainSource, testSource):
           batch_size=batch_size,
           epochs=epochs,
           validation_data=(x_test, y_test),
-          callbacks = [tbCallBack,lratecb] )
+          callbacks = [tbCallBack]) # ,lratecb] )
 
     score, acc = model.evaluate(x_test, y_test,
                             batch_size=batch_size)
