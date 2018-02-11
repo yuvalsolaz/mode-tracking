@@ -39,6 +39,9 @@ def toLstmFormat(data):
 
 
 # TODO : consts
+whights_file = os.path.join('./Model','lstm-best-weights.hdf5')  #-{epoch:02d}-{val_acc:.2f}
+model_image = 'lstm.png'
+
 batch_size = 128
 epochs=1000000
 lrate = 0.005
@@ -48,7 +51,6 @@ momentum=0.9
 decay=0.0
 epsilon=None
 
-model_image = 'lstm.png'
 
 sensor = ['timestamp','gfx','gFy','gFz','wx','wy','wz']
 mode   = ['devicemode']
@@ -83,7 +85,11 @@ def runLSTM(trainSource, testSource):
     model.add(LSTM(256, dropout=0.02 , return_sequences=True,activation='relu', input_shape=(x_train.shape[1],x_train.shape[2])))
     model.add(LSTM(128 , dropout=0.02 , return_sequences=False,activation='relu'))
     model.add(Dense(4, activation='softmax')) #,kernel_regularizer=regularizers.l1(0.002)))
-                                            # activity_regularizer=regularizers.l1(0.01)))
+                                              # activity_regularizer=regularizers.l1(0.01)))
+
+    if os.path.exists(whights_file):
+        print('loading whights from {}'.format (whights_file))
+        model.load_weights(whights_file)
 
     optimizer = Adamax(lr=lrate, beta_1=beta_1, beta_2=beta_2, epsilon=epsilon, decay=decay) # 'adam'
     ##optimizer = SGD(lr=lrate, momentum=momentum , decay=decay) # 'sgd'
@@ -102,14 +108,18 @@ def runLSTM(trainSource, testSource):
     # tensorboard callback :
     tbCallBack = callbacks.TensorBoard(log_dir='./Graph', histogram_freq=0, write_graph=True, write_images=False)
 
+    # checkpoint callback :
+    chkpcb = callbacks.ModelCheckpoint(whights_file, monitor='val_acc', verbose=1, save_best_only=True,save_weights_only=False, mode='max',period=1)
+
     # learning schedule callback
     lratecb = callbacks.LearningRateScheduler(step_decay)
+
 
     model.fit(x_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
           validation_data=(x_test, y_test),
-          callbacks = [tbCallBack]) # ,lratecb] )
+          callbacks = [tbCallBack,chkpcb]) # ,lratecb] )
 
     score, acc = model.evaluate(x_test, y_test,
                             batch_size=batch_size)

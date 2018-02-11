@@ -23,6 +23,7 @@ sdist/
 var/
 wheels/
 Graph/
+Model/
 *.egg-info/
 .installed.cfg
 *.egg
