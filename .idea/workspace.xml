@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64db2749-37fb-4301-b0d8-19a1bb24ae74" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cnnmodel.py" afterPath="$PROJECT_DIR$/cnnmodel.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lstmmodel.py" afterPath="$PROJECT_DIR$/lstmmodel.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,37 +12,29 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="diff.py" pinned="false" current-in-tab="true">
-              <entry file="file://$USER_HOME$/Downloads/diff.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-104">
-                    <caret line="11" column="33" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="12" selection-end-column="36" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="lstmmodel.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstmmodel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="627">
+              <caret line="90" column="32" lean-forward="false" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
-                <marker date="1518327961360" expanded="false" signature="4276:4697" ph="..." />
-                <marker date="1518327961360" expanded="false" signature="4752:5251" ph="..." />
+                <element signature="e#4901#5395#0" expanded="false" />
+                <marker date="1518945392498" expanded="false" signature="4420:4841" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding>
+                <element signature="e#76#94#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/cnnmodel.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="36" column="91" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="91" />
+              <caret line="36" column="91" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="91" />
               <folding>
                 <element signature="e#1#38#0" expanded="true" />
               </folding>
@@ -71,6 +63,7 @@
       <find>urllib2</find>
       <find>callbacks</find>
       <find>localFile</find>
+      <find>shu</find>
       <find>toc</find>
     </findStrings>
   </component>
@@ -93,9 +86,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="2093" />
-    <option name="y" value="35" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="1998" />
+    <option name="y" value="66" />
     <option name="width" value="1855" />
     <option name="height" value="1176" />
   </component>
@@ -353,8 +346,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2093" y="35" width="1855" height="1176" extended-state="0" />
-    <editor active="true" />
+    <frame x="1998" y="66" width="1855" height="1176" extended-state="1" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17789757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -364,9 +356,9 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22149533" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22149533" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="false" weight="0.10296496" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="2007" y="288" width="1457" height="699" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="false" weight="0.10296496" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="2127" y="402" width="1457" height="699" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -392,6 +384,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lstmmodel.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -399,7 +398,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="20" />
+      <option name="time" value="21" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -469,8 +468,8 @@
           <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <marker date="1518327961360" expanded="false" signature="4276:4697" ph="..." />
-            <marker date="1518327961360" expanded="false" signature="4752:5251" ph="..." />
+            <element signature="e#4901#5395#0" expanded="false" />
+            <marker date="1518945392498" expanded="false" signature="4420:4841" ph="..." />
           </folding>
         </state>
       </provider>
@@ -522,6 +521,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#76#94#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -531,8 +533,8 @@
           <caret line="85" column="27" lean-forward="true" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <marker date="1518327961360" expanded="false" signature="4276:4697" ph="..." />
-            <marker date="1518327961360" expanded="false" signature="4752:5251" ph="..." />
+            <element signature="e#4901#5395#0" expanded="false" />
+            <marker date="1518945392498" expanded="false" signature="4420:4841" ph="..." />
           </folding>
         </state>
       </provider>
@@ -607,6 +609,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#76#94#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -663,6 +668,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#76#94#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -766,13 +774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="35" column="27" lean-forward="false" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/diff.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-162">
@@ -791,14 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/diff.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="11" column="33" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="12" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="699">
@@ -807,10 +800,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Downloads/diff.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-104">
+          <caret line="11" column="33" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="12" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="e#76#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cnnmodel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="36" column="91" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="91" />
+          <caret line="36" column="91" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="91" />
           <folding>
             <element signature="e#1#38#0" expanded="true" />
           </folding>
@@ -819,12 +830,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lstmmodel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="627">
+          <caret line="90" column="32" lean-forward="false" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <marker date="1518327961360" expanded="false" signature="4276:4697" ph="..." />
-            <marker date="1518327961360" expanded="false" signature="4752:5251" ph="..." />
+            <element signature="e#4901#5395#0" expanded="false" />
+            <marker date="1518945392498" expanded="false" signature="4420:4841" ph="..." />
           </folding>
         </state>
       </provider>

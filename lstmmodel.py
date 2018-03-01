@@ -55,9 +55,14 @@ epsilon=None
 sensor = ['timestamp','gfx','gFy','gFz','wx','wy','wz']
 mode   = ['devicemode']
 
+def split(data, test_size):
+    sp_len = int(len(data) * (1-test_size))
+    return data[:sp_len] , data[sp_len:]
+
+
 # learning rate schedule
 def step_decay(epoch):
-	initial_lrate = 0.005
+	initial_lrate = 0.02
 	drop = 0.5
 	epochs_drop = 200.0
 	lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
@@ -76,14 +81,14 @@ def runLSTM(trainSource, testSource):
         x_test , y_test  = toLstmFormat(testData)
     else :
         print('split loaded data to train and test : ')
-        train, test = train_test_split(data, test_size=0.2)
+        train, test = split(data,0.3) # train_test_split(data, test_size=0.4,shuffle=False)
         x_train, y_train = toLstmFormat(train)
         x_test , y_test = toLstmFormat(test)
 
     print('Build model...')
     model = Sequential()
-    model.add(LSTM(256, dropout=0.02 , return_sequences=True,activation='relu', input_shape=(x_train.shape[1],x_train.shape[2])))
-    model.add(LSTM(128 , dropout=0.02 , return_sequences=False,activation='relu'))
+    model.add(LSTM(32, dropout=0.00 , return_sequences=True,activation='relu', input_shape=(x_train.shape[1],x_train.shape[2])))
+    model.add(LSTM(28 , dropout=0.00 , return_sequences=False,activation='relu'))
     model.add(Dense(4, activation='softmax')) #,kernel_regularizer=regularizers.l1(0.002)))
                                               # activity_regularizer=regularizers.l1(0.01)))
 
