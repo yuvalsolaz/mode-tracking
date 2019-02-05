@@ -10,6 +10,7 @@ import pickle
 import consts
 import loadData
 import features
+import tensorview
 
 # train xgboost classifier and save model to file
 def trainXgboost(x_train, y_train, outputModelFile = '/dev/null'):
@@ -39,7 +40,6 @@ def getTrainDataFromCloud():
 
 ## usage python train <optional : input directory>
 ## by default load train data from cloud
-
 def run(argv):
     if len(argv) > 1:
         trainData = loadData.loadFiles(argv[1])
@@ -48,6 +48,11 @@ def run(argv):
 
     x_train = trainData[consts.FEATURES]
     y_train = trainData.devicemode
+
+# write data for tensorboard projector ;
+    vec = {}
+    labels = {}
+    tensorview.tensorview(vec_data=vec, label_data=labels)
 
     modelDir = str('model') if len(argv) > 1 else  str('cloud-model')
     trainXgboost(x_train, y_train, os.path.join(modelDir ,'xgb-model.dat'))
