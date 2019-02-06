@@ -1,4 +1,6 @@
+import os
 import pandas as pd
+import numpy as np
 import tensorflow as tf
 from tensorflow.contrib.tensorboard.plugins import projector
 
@@ -8,9 +10,11 @@ from collections import namedtuple
 Label = namedtuple('Label','key mode person device')
 
 def tensorview(vec_data,label_data):
-    df=pd.DataFrame.from_records(data=vec_data)
-    tf_data = tf.Variable(df.values.transpose())
-    with tf.Session as sess:
+    df = pd.DataFrame.from_records(data=vec_data)
+    tf_data = tf.Variable(np.nan_to_num(df.values.transpose()))
+
+    ## Running Tensorlow Session
+    with tf.Session() as sess:
         saver = tf.train.Saver([tf_data])
         sess.run(tf_data.initializer)
         saver.save(sess, os.path.join(LOG_DIR, 'tf_data.ckpt'))
