@@ -52,7 +52,7 @@ def run(argv):
 # write data for tensorboard projector ;
     vec = {}
     labels = {} # Label = 'key mode person device')
-    for i in range(2000): #  train.shape[0]:
+    for i in range(x_train.shape[0]): #  train.shape[0]:
         vec[i]= x_train.values[i]
         labels[i] =  tensorview.Label(key=str(i),
                                       mode=consts.DEVICE_MODE_LABELS[y_train.iloc[i]],
