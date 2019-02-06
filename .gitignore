@@ -23,11 +23,13 @@ sdist/
 var/
 wheels/
 Graph/
+Model/
 *.egg-info/
 .installed.cfg
 *.egg
 */model.h5
 */model.json
+*.png
 
 
 # PyInstaller

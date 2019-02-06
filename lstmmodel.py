@@ -1,13 +1,16 @@
 from __future__ import print_function
+import math
 from keras.models import Sequential
-from keras.layers import Dense, Embedding
+from keras.layers import Dense
 from keras.layers import LSTM
-#from keras.layers import Bidirectional
 from keras.models import model_from_json
-#from keras.optimizers import Adamax
-#from numpy.core.numeric import full
+from keras.optimizers import Adamax , SGD
+from keras import regularizers
 from keras import callbacks
+from keras.utils.vis_utils import plot_model
+
 from sklearn.model_selection import train_test_split
+
 from loadData import *
 
 """Convert an iterable of indices to one-hot encoded labels."""
@@ -36,11 +39,34 @@ def toLstmFormat(data):
 
 
 # TODO : consts
+whights_file = os.path.join('./Model','lstm-best-weights.hdf5')  #-{epoch:02d}-{val_acc:.2f}
+model_image = 'lstm.png'
+
 batch_size = 128
-epochs=1000
+epochs=1000000
+lrate = 0.005
+beta_1=0.9
+beta_2=0.999
+momentum=0.9
+decay=0.0
+epsilon=None
+
 
 sensor = ['timestamp','gfx','gFy','gFz','wx','wy','wz']
 mode   = ['devicemode']
+
+def split(data, test_size):
+    sp_len = int(len(data) * (1-test_size))
+    return data[:sp_len] , data[sp_len:]
+
+
+# learning rate schedule
+def step_decay(epoch):
+	initial_lrate = 0.02
+	drop = 0.5
+	epochs_drop = 200.0
+	lrate = initial_lrate * math.pow(drop, math.floor((1+epoch)/epochs_drop))
+	return lrate
 
 
 def runLSTM(trainSource, testSource):
@@ -55,34 +81,50 @@ def runLSTM(trainSource, testSource):
         x_test , y_test  = toLstmFormat(testData)
     else :
         print('split loaded data to train and test : ')
-        train, test = train_test_split(data, test_size=0.2)
+        train, test = split(data,0.3) # train_test_split(data, test_size=0.4,shuffle=False)
         x_train, y_train = toLstmFormat(train)
         x_test , y_test = toLstmFormat(test)
 
     print('Build model...')
     model = Sequential()
-##    model.add(LSTM(512, input_shape=(x_train.shape[1], x_train.shape[2]),dropout=0.2,return_sequences=True,activation='relu'))
-##    model.add(LSTM(input_dim=512, output_dim=128,dropout=0.2,return_sequences=True,activation='relu'))
-##    model.add(LSTM(input_dim=128, output_dim=64,dropout=0.02,return_sequences=False,activation='relu'))
-    model.add(LSTM(100, dropout=0.2,input_shape=(x_train.shape[1], x_train.shape[2]),return_sequences=True,activation='relu'))
-    model.add(LSTM(50 , dropout=0.2 , return_sequences=False,activation='relu'))
-    model.add(Dense(4, activation='softmax'))
+    model.add(LSTM(32, dropout=0.00 , return_sequences=True,activation='relu', input_shape=(x_train.shape[1],x_train.shape[2])))
+    model.add(LSTM(28 , dropout=0.00 , return_sequences=False,activation='relu'))
+    model.add(Dense(4, activation='softmax')) #,kernel_regularizer=regularizers.l1(0.002)))
+                                              # activity_regularizer=regularizers.l1(0.01)))
 
-    optimizer = 'adam' # Adamax(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0)
+    if os.path.exists(whights_file):
+        print('loading whights from {}'.format (whights_file))
+        model.load_weights(whights_file)
+
+    optimizer = Adamax(lr=lrate, beta_1=beta_1, beta_2=beta_2, epsilon=epsilon, decay=decay) # 'adam'
+    ##optimizer = SGD(lr=lrate, momentum=momentum , decay=decay) # 'sgd'
+
     model.compile(loss='categorical_crossentropy',
                   optimizer=optimizer,
                   metrics=['accuracy'])
 
     print(model.summary())
 
+    plot_model(model, to_file=model_image, show_shapes=True, show_layer_names=True)
+    print('model image : {}'.format(model_image))
+
     print('Train...')
 
+    # tensorboard callback :
     tbCallBack = callbacks.TensorBoard(log_dir='./Graph', histogram_freq=0, write_graph=True, write_images=False)
+
+    # checkpoint callback :
+    chkpcb = callbacks.ModelCheckpoint(whights_file, monitor='val_acc', verbose=1, save_best_only=True,save_weights_only=False, mode='max',period=1)
+
+    # learning schedule callback
+    lratecb = callbacks.LearningRateScheduler(step_decay)
+
+
     model.fit(x_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
           validation_data=(x_test, y_test),
-          callbacks = [tbCallBack] )
+          callbacks = [tbCallBack,chkpcb]) # ,lratecb] )
 
     score, acc = model.evaluate(x_test, y_test,
                             batch_size=batch_size)

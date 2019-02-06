@@ -51,7 +51,10 @@ def run(argv):
 
 # write data for tensorboard projector ;
     vec = {}
-    labels = {}
+    labels = {} # Label = 'key mode person device')
+    for i in range(100): #  train.shape[0]:
+        vec[i]=x_train[:i]
+        labels[i] =  tensorview.Label(key=i,mode=y_train[:i] , person='ariela',device='htc')
     tensorview.tensorview(vec_data=vec, label_data=labels)
 
     modelDir = str('model') if len(argv) > 1 else  str('cloud-model')
